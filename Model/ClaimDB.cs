@@ -8,10 +8,11 @@ namespace WebAplication1.Model
 {
     public class ClaimDB : DbContext
     {
-        public ClaimDB() : base("ClaimDBContext")
+        public ClaimDB() : base("name=ClaimDB")
         {
 
         }
+        public DbSet<CustomerFacing> CustomerFacings { get; set; }
         public DbSet<Claim> Claims { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Document> Documents { get; set; }
