@@ -19,7 +19,7 @@
               <h1 class="box-title">Raise Klaim</h1>
             </div>
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" runat="server">
               <div class="box-body">
 
                 <!-- Form isi Raise Klaim -->
@@ -42,7 +42,9 @@
                 <div class="form-group">
                 <label class="col-sm-3 control-label">Area</label>
                     <div class="col-sm-7">
-                        <select class="form-control select2" style="width: 100%;">
+                        <asp:DropDownList ID="CFDropdown" CssClass="form-control select2" runat="server">
+                        </asp:DropDownList>
+                        <%--<select class="" style="width: 100%;">
                           <option selected="selected">Jakarta</option>
                           <option>Jakarta</option>
                           <option>Bandung</option>
@@ -50,7 +52,7 @@
                           <option>Sumatra Selatan</option>
                           <option>Kalimantan</option>
                           <option>Sulawesi</option>
-                        </select>
+                        </select>--%>
                     </div>
                 </div>
 

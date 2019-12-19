@@ -15,6 +15,9 @@ namespace WebApplication1.Modules
             builder.RegisterType<ClaimService>()
                    .As<IClaimService>()
                    .InstancePerRequest();
+            builder.RegisterType<CustomerFacingService>()
+                    .As<ICustomerFacingService>()
+                    .InstancePerRequest();
             builder.RegisterType<ClaimDB>()
                    .InstancePerLifetimeScope();
         }

@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebAplication1</RootNamespace>
-    <AssemblyName>WebAplication1</AssemblyName>
+    <RootNamespace>WebApplication1</RootNamespace>
+    <AssemblyName>WebApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -141,6 +141,32 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dist\img\avatar.png" />
+    <Content Include="Content\dist\img\avatar04.png" />
+    <Content Include="Content\dist\img\avatar2.png" />
+    <Content Include="Content\dist\img\avatar3.png" />
+    <Content Include="Content\dist\img\avatar5.png" />
+    <Content Include="Content\dist\img\credit\american-express.png" />
+    <Content Include="Content\dist\img\credit\cirrus.png" />
+    <Content Include="Content\dist\img\credit\mastercard.png" />
+    <Content Include="Content\dist\img\credit\mestro.png" />
+    <Content Include="Content\dist\img\credit\paypal.png" />
+    <Content Include="Content\dist\img\credit\paypal2.png" />
+    <Content Include="Content\dist\img\credit\visa.png" />
+    <Content Include="Content\dist\img\default-50x50.gif" />
+    <Content Include="Content\dist\img\icons.png" />
+    <Content Include="Content\dist\img\photo1.png" />
+    <Content Include="Content\dist\img\photo2.png" />
+    <Content Include="Content\dist\img\photo3.jpg" />
+    <Content Include="Content\dist\img\photo4.jpg" />
+    <Content Include="Content\dist\img\user1-128x128.jpg" />
+    <Content Include="Content\dist\img\user2-160x160.jpg" />
+    <Content Include="Content\dist\img\user3-128x128.jpg" />
+    <Content Include="Content\dist\img\user4-128x128.jpg" />
+    <Content Include="Content\dist\img\user5-128x128.jpg" />
+    <Content Include="Content\dist\img\user6-128x128.jpg" />
+    <Content Include="Content\dist\img\user7-128x128.jpg" />
+    <Content Include="Content\dist\img\user8-128x128.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Detail.aspx" />
@@ -241,18 +267,6 @@
     <Compile Include="Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201912050430139_AddUrl.cs" />
-    <Compile Include="Migrations\201912050430139_AddUrl.Designer.cs">
-      <DependentUpon>201912050430139_AddUrl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912110340526_AddUrl1.cs" />
-    <Compile Include="Migrations\201912110340526_AddUrl1.Designer.cs">
-      <DependentUpon>201912110340526_AddUrl1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201912110356046_AddUrl2.cs" />
-    <Compile Include="Migrations\201912110356046_AddUrl2.Designer.cs">
-      <DependentUpon>201912110356046_AddUrl2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CustomerFacing.cs" />
     <Compile Include="Modules\ApplicationModule.cs" />
@@ -263,6 +277,8 @@
     <Compile Include="RaiseClaim.aspx.designer.cs">
       <DependentUpon>RaiseClaim.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Services\CustomerFacingService.cs" />
+    <Compile Include="Services\ICustomerFacingService.cs" />
     <Compile Include="Services\IStatusService.cs" />
     <Compile Include="Services\IDocumentService.cs" />
     <Compile Include="Services\DocumentService.cs" />
@@ -319,17 +335,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201912050430139_AddUrl.resx">
-      <DependentUpon>201912050430139_AddUrl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912110340526_AddUrl1.resx">
-      <DependentUpon>201912110340526_AddUrl1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201912110356046_AddUrl2.resx">
-      <DependentUpon>201912110356046_AddUrl2.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

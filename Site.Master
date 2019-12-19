@@ -17,7 +17,7 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<form runat="server">
+
 <div class="wrapper">
 
   <header class="main-header">
@@ -572,7 +572,7 @@
        immediately after the control sidebar -->
   
 </div>
-</form>
+
 </body>
 <script src="Content/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
