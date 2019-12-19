@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebAplication1.Model;
-using WebAplication1.Services;
+using WebApplication1.Model;
+using WebApplication1.Services;
 
-namespace WebAplication1.Controller
+namespace WebApplication1.Controller
 {
     public class ClaimController : ApiController
     {

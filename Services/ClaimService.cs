@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
 using System.Web;
-using WebAplication1.Model;
-using WebAplication1.ViewModel;
+using WebApplication1.Model;
+using WebApplication1.ViewModel;
 
-namespace WebAplication1.Services
+namespace WebApplication1.Services
 {
     public class ClaimService : IClaimService
     {

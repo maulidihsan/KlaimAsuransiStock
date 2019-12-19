@@ -10,7 +10,7 @@ using System.Web.Routing;
 using System.Web.Http;
 using System.Web.Security;
 using System.Web.SessionState;
-using WebAplication1.Modules;
+using WebApplication1.Modules;
 using System.Reflection;
 
 namespace WebApplication1

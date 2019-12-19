@@ -1,4 +1,4 @@
-namespace WebAplication1.Migrations
+namespace WebApplication1.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -15,15 +15,25 @@ namespace WebAplication1.Migrations
                         DistributorCode = c.String(),
                         Date = c.DateTime(nullable: false),
                         Distributor = c.String(),
-                        Location = c.String(),
                         Cause = c.String(),
-                        Area = c.String(),
-                        CFArea = c.String(),
                         PICName = c.String(),
                         PICPhone = c.String(),
-                        AmountLoss = c.Single(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
-                        UpdatedAt = c.DateTime(nullable: false),
+                        UpdatedAt = c.DateTime(),
+                        CustomerFacing_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.CustomerFacings", t => t.CustomerFacing_Id)
+                .Index(t => t.CustomerFacing_Id);
+            
+            CreateTable(
+                "dbo.CustomerFacings",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CFName = c.String(),
+                        CFEmail = c.String(),
+                        CFArea = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -35,14 +45,14 @@ namespace WebAplication1.Migrations
                         Type = c.Int(nullable: false),
                         FileName = c.String(),
                         FilePath = c.String(),
-                        CreatedAt = c.DateTime(nullable: false),
-                        UpdatedAt = c.DateTime(nullable: false),
                         Approved = c.Boolean(nullable: false),
-                        Claim_Id = c.Int(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedAt = c.DateTime(),
+                        ClaimId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Claims", t => t.Claim_Id)
-                .Index(t => t.Claim_Id);
+                .ForeignKey("dbo.Claims", t => t.ClaimId, cascadeDelete: true)
+                .Index(t => t.ClaimId);
             
             CreateTable(
                 "dbo.Notifications",
@@ -52,12 +62,12 @@ namespace WebAplication1.Migrations
                         Message = c.String(),
                         Read = c.Boolean(nullable: false),
                         CreatedAt = c.DateTime(nullable: false),
-                        UpdatedAt = c.DateTime(nullable: false),
-                        Claim_Id = c.Int(),
+                        UpdatedAt = c.DateTime(),
+                        ClaimId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Claims", t => t.Claim_Id)
-                .Index(t => t.Claim_Id);
+                .ForeignKey("dbo.Claims", t => t.ClaimId, cascadeDelete: true)
+                .Index(t => t.ClaimId);
             
             CreateTable(
                 "dbo.Status",
@@ -69,11 +79,13 @@ namespace WebAplication1.Migrations
                         Done = c.Boolean(nullable: false),
                         ValidFrom = c.DateTime(nullable: false),
                         ValidUntil = c.DateTime(nullable: false),
-                        Claim_Id = c.Int(),
+                        CreatedAt = c.DateTime(nullable: false),
+                        UpdatedAt = c.DateTime(),
+                        ClaimId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Claims", t => t.Claim_Id)
-                .Index(t => t.Claim_Id);
+                .ForeignKey("dbo.Claims", t => t.ClaimId, cascadeDelete: true)
+                .Index(t => t.ClaimId);
             
             CreateTable(
                 "dbo.LateSubmissions",
@@ -82,28 +94,31 @@ namespace WebAplication1.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Reason = c.String(),
                         CreatedAt = c.DateTime(nullable: false),
-                        Status_Id = c.Int(),
+                        StatusId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Status", t => t.Status_Id)
-                .Index(t => t.Status_Id);
+                .ForeignKey("dbo.Status", t => t.StatusId, cascadeDelete: true)
+                .Index(t => t.StatusId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.LateSubmissions", "Status_Id", "dbo.Status");
-            DropForeignKey("dbo.Status", "Claim_Id", "dbo.Claims");
-            DropForeignKey("dbo.Notifications", "Claim_Id", "dbo.Claims");
-            DropForeignKey("dbo.Documents", "Claim_Id", "dbo.Claims");
-            DropIndex("dbo.LateSubmissions", new[] { "Status_Id" });
-            DropIndex("dbo.Status", new[] { "Claim_Id" });
-            DropIndex("dbo.Notifications", new[] { "Claim_Id" });
-            DropIndex("dbo.Documents", new[] { "Claim_Id" });
+            DropForeignKey("dbo.LateSubmissions", "StatusId", "dbo.Status");
+            DropForeignKey("dbo.Status", "ClaimId", "dbo.Claims");
+            DropForeignKey("dbo.Notifications", "ClaimId", "dbo.Claims");
+            DropForeignKey("dbo.Documents", "ClaimId", "dbo.Claims");
+            DropForeignKey("dbo.Claims", "CustomerFacing_Id", "dbo.CustomerFacings");
+            DropIndex("dbo.LateSubmissions", new[] { "StatusId" });
+            DropIndex("dbo.Status", new[] { "ClaimId" });
+            DropIndex("dbo.Notifications", new[] { "ClaimId" });
+            DropIndex("dbo.Documents", new[] { "ClaimId" });
+            DropIndex("dbo.Claims", new[] { "CustomerFacing_Id" });
             DropTable("dbo.LateSubmissions");
             DropTable("dbo.Status");
             DropTable("dbo.Notifications");
             DropTable("dbo.Documents");
+            DropTable("dbo.CustomerFacings");
             DropTable("dbo.Claims");
         }
     }

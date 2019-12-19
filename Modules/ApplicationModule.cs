@@ -3,10 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebAplication1.Model;
-using WebAplication1.Services;
+using WebApplication1.Model;
+using WebApplication1.Services;
 
-namespace WebAplication1.Modules
+namespace WebApplication1.Modules
 {
     public class ApplicationModule : Module
     {
