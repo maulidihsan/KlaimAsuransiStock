@@ -40,17 +40,20 @@
                   <div class="col-sm-7"><input class="form-control" id="tanggalkejadian" placeholder="dd/mm/yyyy"></div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">Area</label>
-                  <div class="col-sm-7">
-                  <select class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                  </div>
+                <label class="col-sm-3 control-label">Area</label>
+                    <div class="col-sm-7">
+                        <select class="form-control select2" style="width: 100%;">
+                          <option selected="selected">Jakarta</option>
+                          <option>Jakarta</option>
+                          <option>Bandung</option>
+                          <option>Bali</option>
+                          <option>Sumatra Selatan</option>
+                          <option>Kalimantan</option>
+                          <option>Sulawesi</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="form-group">
                   <label class="col-sm-3 control-label">CF to be Notified</label>
                   <div class="col-sm-7"><input class="form-control" id="cf" disabled></div>
