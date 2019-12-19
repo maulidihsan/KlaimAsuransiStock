@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 
-namespace WebAplication1.Model
+namespace WebApplication1.Model
 {
     public class ClaimDB : DbContext
     {

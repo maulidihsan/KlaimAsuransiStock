@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebAplication1.Model;
+using WebApplication1.Model;
 
-namespace WebAplication1.Services
+namespace WebApplication1.Services
 {
     public class StatusService : IStatusService
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebAplication1.Model;
+using WebApplication1.Model;
 
-namespace WebAplication1.Services
+namespace WebApplication1.Services
 {
     public interface IStatusService : IDisposable
     {
