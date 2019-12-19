@@ -1,1 +1,4 @@
 .vs
+WebApplication1.csproj*
+obj/
+bin/
