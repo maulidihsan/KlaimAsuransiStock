@@ -15,10 +15,10 @@ namespace WebAplication1.Migrations
         protected override void Seed(WebAplication1.Model.ClaimDB context)
         {
             context.CustomerFacings.AddOrUpdate(x => x.Id,
-                new Model.CustomerFacing() { Id = 1, CFEmail = "Johannes.Purwanto@stock.com", CFArea = "North Sumatera" },
-                new Model.CustomerFacing() { Id = 1, CFEmail = "Aprima.Dheo@stock.com", CFArea = "Southern Sumatera" },
-                new Model.CustomerFacing() { Id = 1, CFEmail = "Teguh.Widowati@stock.com", CFArea = "West Java, Jakarta" },
-                new Model.CustomerFacing() { Id = 1, CFEmail = "Oditia.Giyarini@stock.com", CFArea = "Papua Maluku" }
+                new Model.CustomerFacing() { Id = 1, CFName = "Johannes",  CFEmail = "Johannes.Purwanto@stock.com", CFArea = "North Sumatera" },
+                new Model.CustomerFacing() { Id = 1, CFName = "Aprima", CFEmail = "Aprima.Dheo@stock.com", CFArea = "Southern Sumatera" },
+                new Model.CustomerFacing() { Id = 1, CFName = "Teguh", CFEmail = "Teguh.Widowati@stock.com", CFArea = "West Java, Jakarta" },
+                new Model.CustomerFacing() { Id = 1, CFName = "Oditia", CFEmail = "Oditia.Giyarini@stock.com", CFArea = "Papua Maluku" }
             );
             //  This method will be called after migrating to the latest version.
 

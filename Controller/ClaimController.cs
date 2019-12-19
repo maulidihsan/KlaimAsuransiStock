@@ -24,18 +24,34 @@ namespace WebAplication1.Controller
         }
 
         // GET: api/Claim/5
-        public string Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return "value";
+            try
+            {
+                Claim claimDetails = _claimService.ClaimDetails(id);
+                return Request.CreateResponse(HttpStatusCode.OK, claimDetails);
+            }
+            catch(Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
+            }
         }
 
         // POST: api/Claim
         public HttpResponseMessage Post([FromBody]Claim NewClaim)
         {
-            _claimService.CreateClaim(NewClaim);
             if(!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+
+            try
+            {
+                _claimService.CreateClaim(NewClaim);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
             }
             return Request.CreateResponse(HttpStatusCode.OK, "success");
         }
@@ -46,8 +62,17 @@ namespace WebAplication1.Controller
         }
 
         // DELETE: api/Claim/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            try
+            {
+                _claimService.RemoveClaim(id);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.ToString());
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, "success");
         }
     }
 }

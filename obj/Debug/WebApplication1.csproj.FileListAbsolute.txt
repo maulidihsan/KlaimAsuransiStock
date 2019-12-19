@@ -182,3 +182,5 @@ C:\Users\joann\Documents\SKRIPSI\Project\KlaimAsuransiStock\obj\Debug\WebAplicat
 C:\Users\joann\Documents\SKRIPSI\Project\KlaimAsuransiStock\obj\Debug\WebApplication1.csproj.GenerateResource.cache
 C:\Users\joann\Documents\SKRIPSI\Project\KlaimAsuransiStock\obj\Debug\WebApplication1.csproj.CoreCompileInputs.cache
 C:\Users\joann\Documents\SKRIPSI\Project\KlaimAsuransiStock\obj\Debug\WebApplication1.csproj.CopyComplete
+C:\Users\maulidihsan\source\repos\WebApplication1\obj\Debug\WebAplication1.Migrations.AddUrl3.resources
+C:\Users\maulidihsan\source\repos\WebApplication1\obj\Debug\WebAplication1.Migrations.AddUrl4.resources

@@ -11,6 +11,7 @@ namespace WebAplication1.Services
     public class ClaimService : IClaimService
     {
         private ClaimDB db;
+        private IStatusService statusService;
         public ClaimService(ClaimDB db)
         {
             this.db = db;
@@ -51,6 +52,17 @@ namespace WebAplication1.Services
         {
             db.Claims.Add(claim);
             db.SaveChanges();
+
+            Status status = new Status()
+            {
+                ClaimId = claim.Id,
+                StatusCode = "",
+                Description = "",
+                Done = false,
+                ValidFrom = DateTime.Now,
+                ValidUntil = DateTime.Now.AddDays(15)
+            };
+            statusService.CreateStatus(status);
         }
 
         public void UpdateClaim(Claim claim)
@@ -59,8 +71,10 @@ namespace WebAplication1.Services
             db.SaveChanges();
         }
 
-        public void RemoveClaim(Claim claim)
+        public void RemoveClaim(int idClaim)
         {
+            Claim claim = new Claim() { Id = idClaim };
+            db.Claims.Attach(claim);
             db.Claims.Remove(claim);
             db.SaveChanges();
         }

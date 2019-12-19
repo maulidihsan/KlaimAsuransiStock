@@ -244,6 +244,14 @@
     <Compile Include="Migrations\201912110356046_AddUrl2.Designer.cs">
       <DependentUpon>201912110356046_AddUrl2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912130704082_AddUrl3.cs" />
+    <Compile Include="Migrations\201912130704082_AddUrl3.Designer.cs">
+      <DependentUpon>201912130704082_AddUrl3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912130740434_AddUrl4.cs" />
+    <Compile Include="Migrations\201912130740434_AddUrl4.Designer.cs">
+      <DependentUpon>201912130740434_AddUrl4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CustomerFacing.cs" />
     <Compile Include="Modules\ApplicationModule.cs" />
@@ -311,6 +319,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912110356046_AddUrl2.resx">
       <DependentUpon>201912110356046_AddUrl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912130704082_AddUrl3.resx">
+      <DependentUpon>201912130704082_AddUrl3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912130740434_AddUrl4.resx">
+      <DependentUpon>201912130740434_AddUrl4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

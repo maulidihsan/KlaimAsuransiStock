@@ -20,7 +20,7 @@ namespace WebAplication1.Model
         public string PICName { get; set; }
         public string PICPhone { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public Nullable<DateTime> UpdatedAt { get; set; }
 
         public virtual CustomerFacing CustomerFacing { get; set; }
         public virtual ICollection<Status> Statuses { get; set; }

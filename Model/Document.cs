@@ -24,14 +24,18 @@ namespace WebAplication1.Model
     }
     public class Document
     {
+        public Document()
+        {
+            CreatedAt = DateTime.Now;
+        }
         public int Id { get; set; }
         public DocType Type { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
         public bool  Approved { get; set; }
-
+        public DateTime CreatedAt { get; set; }
+        public Nullable<DateTime> UpdatedAt { get; set; }
+        public int ClaimId { get; set; }
         public virtual Claim Claim { get; set; }
     }
 }

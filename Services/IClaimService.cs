@@ -15,7 +15,7 @@ namespace WebAplication1.Services
         PaginatedItemsViewModel<Claim> GetClaimPaginated(int pageSize, int pageIndex);
         void CreateClaim(Claim claim);
         void UpdateClaim(Claim claim);
-        void RemoveClaim(Claim claim);
+        void RemoveClaim(int id);
         // void ChangeStatus(Status status);
         // void UpdateStatus(Status status);
     }
