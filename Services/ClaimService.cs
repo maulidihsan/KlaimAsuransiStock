@@ -11,10 +11,11 @@ namespace WebApplication1.Services
     public class ClaimService : IClaimService
     {
         private ClaimDB db;
-        public IStatusService statusService;
-        public ClaimService(ClaimDB db)
+        private IStatusService statusService;
+        public ClaimService(ClaimDB db, IStatusService check)
         {
             this.db = db;
+            this.statusService = check;
         }
 
         public IEnumerable<Claim> GetClaims()
@@ -62,7 +63,7 @@ namespace WebApplication1.Services
                 ValidFrom = DateTime.Now,
                 ValidUntil = DateTime.Now.AddDays(15)
             };
-            statusService.CreateStatus(status);
+            this.statusService.CreateStatus(status);
         }
 
         public void UpdateClaim(Claim claim)
