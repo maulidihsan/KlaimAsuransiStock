@@ -15,38 +15,37 @@ namespace WebApplication1
     {
         public IClaimService claimService { get; set; }
         public ICustomerFacingService customerFacingService { get; set; }
+        public static List<CustomerFacing> listCF { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<CustomerFacing> listCF = this.customerFacingService.GetCF().ToList();
-            CFDropdown.DataSource = dt;
-            CFDropdown.DataTextField = "CFArea";
-            CFDropdown.DataValueField = "Id";
-            CFDropdown.DataBind();
+            if (!this.IsPostBack)
+            {
+                listCF = this.customerFacingService.GetCF().ToList();
+                CFDropdown.DataSource = listCF;
+                CFDropdown.DataTextField = "CFArea";
+                CFDropdown.DataValueField = "Id";
+                CFDropdown.DataBind();
+            }
+        }
+        protected void cfSelected(object sender, EventArgs e)
+        {
+            CustomerFacing selected = listCF.Find(item => item.Id.ToString() == CFDropdown.SelectedValue);
+            tbCF.Text = selected.CFName + " <" + selected.CFEmail + ">";
         }
 
-        private DataTable ToDataTable<T>(List<T> items)
+        protected void Submit_Click(Object sender, EventArgs e)
         {
-            var tb = new DataTable(typeof(T).Name);
-
-            PropertyInfo[] props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-            foreach (var prop in props)
+            Claim klaimBaru = new Claim
             {
-                tb.Columns.Add(prop.Name, prop.PropertyType);
-            }
-
-            foreach (var item in items)
-            {
-                var values = new object[props.Length];
-                for (var i = 0; i < props.Length; i++)
-                {
-                    values[i] = props[i].GetValue(item, null);
-                }
-
-                tb.Rows.Add(values);
-            }
-
-            return tb;
+                DistributorCode = tbKode.Text,
+                Date = Convert.ToDateTime(tbTanggal.Text),
+                Distributor = tbNama.Text,
+                Cause = tbInsiden.Text,
+                PICName = "Coba",
+                PICPhone = "080800880",
+                CustomerFacingId = Convert.ToInt32(CFDropdown.SelectedValue)
+            };
+            claimService.CreateClaim(klaimBaru);
         }
     }
 }

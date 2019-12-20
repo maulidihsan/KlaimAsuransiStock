@@ -11,7 +11,7 @@ namespace WebApplication1.Services
     public class ClaimService : IClaimService
     {
         private ClaimDB db;
-        private IStatusService statusService;
+        public IStatusService statusService;
         public ClaimService(ClaimDB db)
         {
             this.db = db;

@@ -267,6 +267,10 @@
     <Compile Include="Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912200415391_AddUrl.cs" />
+    <Compile Include="Migrations\201912200415391_AddUrl.Designer.cs">
+      <DependentUpon>201912200415391_AddUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CustomerFacing.cs" />
     <Compile Include="Modules\ApplicationModule.cs" />
@@ -335,6 +339,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201912200415391_AddUrl.resx">
+      <DependentUpon>201912200415391_AddUrl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
