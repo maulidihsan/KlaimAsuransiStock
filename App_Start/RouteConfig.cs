@@ -10,6 +10,11 @@ namespace WebApplication1
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapPageRoute(
+                "ProductsByPageRoute",
+                "Default/index/{index}/size/{size}",
+                "~/Default.aspx"
+            );
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Permanent;
             routes.EnableFriendlyUrls(settings);

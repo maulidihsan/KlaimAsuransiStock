@@ -46,6 +46,7 @@ namespace WebApplication1
                 CustomerFacingId = Convert.ToInt32(CFDropdown.SelectedValue)
             };
             claimService.CreateClaim(klaimBaru);
+            Response.Redirect("Default.aspx");
         }
     }
 }

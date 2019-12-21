@@ -22,7 +22,65 @@
             </div>
             <!-- tabel dasboard -->
             <div class="box-body">
-              <table class="table table-hover">
+                <asp:ListView ID="ClaimListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.Claim" runat="server">
+                    <EmptyDataTemplate>
+                        <table>
+                            <tr>
+                                <td>No data was returned.</td>
+                            </tr>
+                        </table>
+                    </EmptyDataTemplate>
+                    <LayoutTemplate>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                  <th scope="col">No.</th>
+                                  <th scope="col">Insiden Klaim</th>
+                                  <th scope="col">Distributor</th>
+                                  <th scope="col">Tanggal Pelaporan</th>
+                                  <th scope="col">Status</th>
+                                </tr>
+                            </thead>
+                            <tr data-toggle="collapse" data-target="#accordion1" CssClass="clickable" runat="server" id="itemPlaceholder" />
+                        </table>
+                    </LayoutTemplate>
+                    <ItemTemplate>
+                      <tr runat="server">
+                        <th scope="row"><%#Container.DisplayIndex + listClaim.ActualPage * listClaim.ItemsPerPage + 1 %></th>
+                        <td>
+                          <asp:Label ID="lblInsidenKlaim" runat="server" Text='<%# Eval("Cause")%>' />
+                        </td>
+                        <td>
+                          <asp:Label ID="lblDistributor" runat="server" Text='<%# Eval("Distributor")%>' />
+                        </td>
+                        <td>
+                          <asp:Label ID="lblTanggal" runat="server" Text='<%# Eval("Date")%>' /></td>
+                        <td>
+                          <div class="info-box bg-green">
+                            <div class="info-box-content">
+                                <div class="row">
+                                    <p class="small-box bg-yellow col-md-2">DISP</p>
+                                    <p class="col-md-3 pull-right">5 days left</p>
+                                </div>
+                                <div class="row">
+                                    <div class="progress">
+                                        <div class="progress-bar" style="width: 50%"></div>
+                                    </div>
+                                    <p class="progress-description">50% Increase in 30 Days</p>
+                                </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="collapse" id="accordion1">
+                          <td><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
+                          <td>hi</td>
+                          <td></td>
+                          <td><div class="box box-solid box-danger">cac</div></td>
+                      </tr>
+                    </ItemTemplate>
+              </asp:ListView>
+              <%--<table class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">Insiden Klaim</th>
@@ -34,7 +92,7 @@
                   <tbody>
                     <!-- list isi tabel -->
                     <tr data-toggle="collapse" data-target="#accordion1" class="clickable">
-                      <td>1</td>
+                      <th scope="row">1</th>
                       <td>Mark</td>
                       <td>Otto</td>
                       <td>
@@ -79,7 +137,24 @@
                     </tr>
 
                   </tbody>
-                </table>
+                </table>--%>
+            </div>
+            <div class="box-footer clearfix">
+              <span>
+                 Page <%: (listClaim.ActualPage + 1)%> of <%: listClaim.TotalPages%>
+              </span>
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li>
+                    <asp:HyperLink ID="PaginationPrevious" runat="server">
+                        &laquo;
+                    </asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink ID="PaginationNext" runat="server">
+                        &raquo;
+                    </asp:HyperLink>
+                </li>
+              </ul>
             </div>
         </div>
     </section>
