@@ -34,110 +34,67 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                  <th scope="col">No.</th>
+                                  <th align="center">No.</th>
                                   <th scope="col">Insiden Klaim</th>
                                   <th scope="col">Distributor</th>
                                   <th scope="col">Tanggal Pelaporan</th>
                                   <th scope="col">Status</th>
                                 </tr>
                             </thead>
-                            <tr data-toggle="collapse" data-target="#accordion1" CssClass="clickable" runat="server" id="itemPlaceholder" />
+                            <tr runat="server" id="itemPlaceholder" />
                         </table>
                     </LayoutTemplate>
                     <ItemTemplate>
-                      <tr runat="server">
-                        <th scope="row"><%#Container.DisplayIndex + listClaim.ActualPage * listClaim.ItemsPerPage + 1 %></th>
-                        <td>
+                      <tr data-toggle="collapse" data-target="#accordion<%# Container.DisplayIndex %>" class="clickable">
+                        <td width="10%" align="center" scope="row"><%#Container.DisplayIndex + listClaim.ActualPage * listClaim.ItemsPerPage + 1 %></td>
+                        <td width="20%">
                           <asp:Label ID="lblInsidenKlaim" runat="server" Text='<%# Eval("Cause")%>' />
                         </td>
-                        <td>
+                        <td width="10%">
                           <asp:Label ID="lblDistributor" runat="server" Text='<%# Eval("Distributor")%>' />
                         </td>
                         <td>
-                          <asp:Label ID="lblTanggal" runat="server" Text='<%# Eval("Date")%>' /></td>
+                          <asp:Label ID="lblTanggal" runat="server" Text='<%# Eval("CreatedAt")%>' /></td>
                         <td>
-                          <div class="info-box bg-green">
-                            <div class="info-box-content">
-                                <div class="row">
-                                    <p class="small-box bg-yellow col-md-2">DISP</p>
-                                    <p class="col-md-3 pull-right">5 days left</p>
-                                </div>
-                                <div class="row">
+                          <div class="info-box bg-green" style="width: 60%">
+                            <div class="info-box-body">
+                                
+                                    <span class="small-box bg-yellow col-md-2">DISP</span>
+                                    <span class="col-md-3 pull-right">5 days left</span>
+                                
                                     <div class="progress">
                                         <div class="progress-bar" style="width: 50%"></div>
                                     </div>
                                     <p class="progress-description">50% Increase in 30 Days</p>
-                                </div>
+                               
                             </div>
                           </div>
                         </td>
                       </tr>
-                      <tr class="collapse" id="accordion1">
-                          <td><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
-                          <td>hi</td>
+
+                      <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
+                          <td align="center"><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
+                          <td>
+                              Nama PIC : <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
+                              <br/> <br/>
+                              Tanggal Kejadian :<asp:Label ID="Label1" runat="server" Text='<%# Eval("Date")%>' />
+                          </td>
                           <td></td>
-                          <td><div class="box box-solid box-danger">cac</div></td>
+                          <td></td>
+                          <td>
+                              <div class="box box-solid box-danger" width="50%">
+                                  <div class="box-header">
+                                      Deadline
+                                  </div>
+                                  <div class="box-body">
+                                      21 September 2019
+                                  </div>
+                              </div>
+                          </td>
                       </tr>
                     </ItemTemplate>
               </asp:ListView>
-              <%--<table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">Insiden Klaim</th>
-                      <th scope="col">Distributor</th>
-                      <th scope="col">Tanggal Pelaporan</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- list isi tabel -->
-                    <tr data-toggle="collapse" data-target="#accordion1" class="clickable">
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>
-                        <div class="info-box bg-green">
-                            <div class="info-box-content">
-                            <div class="row">
-                                <p class="small-box bg-yellow col-md-2">DISP</p>
-                                <p class="col-md-3 pull-right">5 days left</p>
-                            </div>
-                            <div class="row">
-                                <div class="progress">
-                                    <div class="progress-bar" style="width: 50%"></div>
-                                </div>
-                                <p class="progress-description">50% Increase in 30 Days</p>
-                            </div>
-                            </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="collapse" id="accordion1">
-                      <td><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
-                      <td>hi</td>
-                      <td></td>
-                      <td><div class="box box-solid box-danger">cac</div></td>
-                    </tr>
-
-                    <tr data-toggle="collapse" data-target="#accordion2" class="clickable">
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr class="collapse" id="accordion2">
-                      <td><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
-                      <td>hii</td>
-                    </tr>
-
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
-
-                  </tbody>
-                </table>--%>
+     
             </div>
             <div class="box-footer clearfix">
               <span>
