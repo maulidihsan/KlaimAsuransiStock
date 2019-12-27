@@ -44,6 +44,7 @@ namespace WebApplication1.Services
         public Claim ClaimDetails(int id)
         {
             return db.Claims
+                .Include(s => s.CustomerFacing)
                 .Include(s => s.Statuses)
                 .Include(s => s.Documents)
                 .FirstOrDefault(ci => ci.Id == id);

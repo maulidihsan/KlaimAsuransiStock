@@ -39,10 +39,10 @@ namespace WebApplication1
 
         private void ConfigurePagination()
         {
-            PaginationNext.NavigateUrl = GetRouteUrl("ProductsByPageRoute", new { index = listClaim.ActualPage + 1, size = listClaim.ItemsPerPage });
+            PaginationNext.NavigateUrl = GetRouteUrl("ClaimsByPageRoute", new { index = listClaim.ActualPage + 1, size = listClaim.ItemsPerPage });
             PaginationNext.Visible = listClaim.ActualPage < listClaim.TotalPages - 1 ? true : false;
            
-            PaginationPrevious.NavigateUrl = GetRouteUrl("ProductsByPageRoute", new { index = listClaim.ActualPage - 1, size = listClaim.ItemsPerPage });
+            PaginationPrevious.NavigateUrl = GetRouteUrl("ClaimsByPageRoute", new { index = listClaim.ActualPage - 1, size = listClaim.ItemsPerPage });
             PaginationPrevious.Visible = listClaim.ActualPage > 0 ? true : false;
         }
     }

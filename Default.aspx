@@ -73,7 +73,7 @@
                       </tr>
 
                       <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
-                          <td align="center"><a href="Detail.aspx" class="btn btn-primary">Detail</a></td>
+                          <td align="center"><a href="Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
                           <td>
                               Nama PIC : <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
                               <br/> <br/>
