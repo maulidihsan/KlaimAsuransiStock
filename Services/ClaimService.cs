@@ -58,8 +58,8 @@ namespace WebApplication1.Services
             Status status = new Status()
             {
                 ClaimId = claim.Id,
-                StatusCode = "",
-                Description = "",
+                StatusCode = "IN",
+                Description = "Waiting for documents",
                 Done = false,
                 ValidFrom = DateTime.Now,
                 ValidUntil = DateTime.Now.AddDays(15)

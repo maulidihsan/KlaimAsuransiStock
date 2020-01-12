@@ -32,19 +32,127 @@
                         <h3 class="timeline-header"><%= status.Description %></h3>
 
                         <div class="timeline-body with-border">
-                          <div class="box">
-                              <a class="box-header bg-gray" data-toggle="collapse" href="#uploadfbp" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Upload
-                              </a>
-                              <div class="collapse" id="uploadfbp">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                     <label class="col-sm-2" for="exampleInputFile">File input</label>
-                                     <div class="col-sm-7"><input type="file" id="exampleInputFile"></div>
+                            <%  if (status.StatusCode == "IN") { %>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  AIG Claim Form
+                                </a>
+                                <div class="collapse" id="claimform">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="claimformFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="claimformFile"></div>
+                                        </div>
                                     </div>
                                 </div>
-                              </div>
-                          </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#laporanklaim" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Surat Laporan Klaim
+                                </a>
+                                <div class="collapse" id="laporanklaim">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="laporanklaimFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="laporanklaimFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#invoicebarang" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Invoice Barang Rusak
+                                </a>
+                                <div class="collapse" id="invoicebarang">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="invoicebarangFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="invoicebarangFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  LP 1 bulan terakhir
+                                </a>
+                                <div class="collapse" id="lp">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="lpFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="lpFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Surat Jalan 7 Hari Terakhir
+                                </a>
+                                <div class="collapse" id="suratjalan">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="suratjalanFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="suratjalanFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Invoice Pengeluaran Barang
+                                </a>
+                                <div class="collapse" id="invoicepengeluaran">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="invoicepengeluaranFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="invoicepengeluaranFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#rekappengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Rekap pengeluaran barang
+                                </a>
+                                <div class="collapse" id="rekappengeluaran">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="rekappengeluaranFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="rekappengeluaranFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#qcreport" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  QC Report
+                                </a>
+                                <div class="collapse" id="qcreport">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="qcreportFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="qcreportFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="box">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#suratpengajuanklaim" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Surat Pengajuan Klaim
+                                </a>
+                                <div class="collapse" id="suratpengajuanklaim">
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="suratpengajuanklaimFile">File input</label>
+                                            <div class="col-sm-7"><input type="file" id="suratpengajuanklaimFile"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
 
                           <div class="box">
                               <a class="box-header bg-gray" data-toggle="collapse" href="#uploadtreasury" role="button" aria-expanded="false" aria-controls="uploadtreasury">
