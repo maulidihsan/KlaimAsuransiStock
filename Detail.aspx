@@ -177,94 +177,9 @@
                </li>
            <% } %>
            </ul>
-           <%--<ul class="timeline">
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-clock-o bg-gray"></i>
-
-              <div class="timeline-item">
-                <span class="time">
-                    <a class="btn btn-danger btn-xs">Deadline: 21 Nov 2019</a>
-                    <a class="btn btn-primary btn-xs">DISC</a>
-                </span>
-
-                <h3 class="timeline-header">Waiting for Document</h3>
-
-                <div class="timeline-body with-border">
-                  <div class="box">
-                  <a class="box-header bg-gray" data-toggle="collapse" href="#uploadfbp" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                      FBP Upload
-                  </a>
-                  <div class="collapse" id="uploadfbp">
-                    <div class="box-body">
-                        <div class="form-group">
-                         <label class="col-sm-2" for="exampleInputFile">File input</label>
-                         <div class="col-sm-7"><input type="file" id="exampleInputFile"></div>
-                        </div>
-                    </div>
-                  </div>
-                  </div>
-
-                  <div class="box">
-                  <a class="box-header bg-gray" data-toggle="collapse" href="#uploadtreasury" role="button" aria-expanded="false" aria-controls="uploadtreasury">
-                      FBP Upload
-                  </a>
-                  <div class="collapse" id="uploadtreasury">
-                    <div class="box-body">
-                        <div class="form-group">
-                         <label class="col-sm-2" for="InputFile">File input</label>
-                         <div class="col-sm-7"><input type="file" id="InputFile"></div>
-                        </div>
-                        <div class="form-group">
-                        <label class="col-sm-2">File input</label>
-                        <div class="col-sm-7"><button type="submit" class="btn btn-primary">Submit</button></div>
-                        </div>
-                    </div>
-                  </div>
-                  </div>
-
-                </div>
-
-                <div class="timeline-footer bg-gray">
-                  <p>uploaded</p>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-user bg-aqua"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                <div class="timeline-body">
-                  Take me to your leader!
-                  Switzerland is small and neutral!
-                  We are more like Germany, ambitious and misunderstood!
-                </div>
-                <div class="timeline-footer">
-                  <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            
-          </ul>--%>
+     
        </div>
+
 
        <div class="col-md-5">
          <div class="box box-info">
