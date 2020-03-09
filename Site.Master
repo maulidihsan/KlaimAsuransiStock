@@ -343,7 +343,7 @@
 
         <%--Menu Stock at Distribution--%>
         <li>
-            <a href="Default.aspx">
+            <a href="/Default.aspx">
                 <i class="fa fa-dashboard"></i> 
                 <span>Stock at Distribution</span>
             </a>
