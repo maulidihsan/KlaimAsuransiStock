@@ -198,6 +198,8 @@
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <None Include="_bin_deployableAssemblies\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="RaiseClaim.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -266,6 +268,20 @@
     </Compile>
     <Compile Include="Detail.aspx.designer.cs">
       <DependentUpon>Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201912200415391_AddUrl.cs" />
     <Compile Include="Migrations\201912200415391_AddUrl.Designer.cs">

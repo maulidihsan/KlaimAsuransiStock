@@ -34,7 +34,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                  <th align="center">No.</th>
+                                  <th style="text-align:center">No.</th>
                                   <th scope="col">Insiden Klaim</th>
                                   <th scope="col">Distributor</th>
                                   <th scope="col">Tanggal Pelaporan</th>
@@ -46,7 +46,7 @@
                     </LayoutTemplate>
                     <ItemTemplate>
                       <tr data-toggle="collapse" data-target="#accordion<%# Container.DisplayIndex %>" class="clickable">
-                        <td width="10%" align="center" scope="row"><%#Container.DisplayIndex + listClaim.ActualPage * listClaim.ItemsPerPage + 1 %></td>
+                        <td style="width:10%; text-align:center" scope="row"><%#Container.DisplayIndex + listClaim.ActualPage * listClaim.ItemsPerPage + 1 %></td>
                         <td width="20%">
                           <asp:Label ID="lblInsidenKlaim" runat="server" Text='<%# Eval("Cause")%>' />
                         </td>
@@ -56,33 +56,32 @@
                         <td>
                           <asp:Label ID="lblTanggal" runat="server" Text='<%# Eval("CreatedAt")%>' /></td>
                         <td>
-                          <div class="info-box bg-green" style="width: 60%">
-                            <div class="info-box-body">
-                                
-                                    <span class="small-box bg-yellow col-md-2">DISP</span>
-                                    <span class="col-md-3 pull-right">5 days left</span>
-                                
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 50%"></div>
-                                    </div>
-                                    <p class="progress-description">50% Increase in 30 Days</p>
-                               
-                            </div>
+                          <div class="small-box bg-green col-md-7">     
+                              <div class="inner">
+                                <div class="row">
+                                    <div class="col-md-4"><div class="small-box bg-yellow"><p>DISP</p></div> </div>                                
+                                    <div class="col-md-8"><p class="pull-right">5 days left</p></div>     
+                                </div>                                
+                                <div class="row">
+                                    <div class="col-md-9"><h4>Disposal Process</h4></div>
+                                    <div class="col-md-3"><i class="fa fa-check-circle bg-green fa-2x"></i></div>
+                                </div>           
+                              </div>
                           </div>
                         </td>
                       </tr>
 
                       <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
-                          <td align="center"><a href="Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
+                          <td></td>
+                          <td><a href="Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
+                          <td></td>
                           <td>
                               Nama PIC : <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
                               <br/> <br/>
                               Tanggal Kejadian :<asp:Label ID="Label1" runat="server" Text='<%# Eval("Date")%>' />
                           </td>
-                          <td></td>
-                          <td></td>
                           <td>
-                              <div class="box box-solid box-danger" width="50%">
+                              <div class="box box-solid box-danger" style="width:50%">
                                   <div class="box-header">
                                       Deadline
                                   </div>

@@ -35,10 +35,12 @@
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
+                                      <div class="col-md-11"> 
                                       Disposal Documentation
+                                  </div>                                  
                                   </div>
                                   <div class="col-md-1"> 
-                                      <i class="fa fa-check" style="color:green"></i>
+                                      <i class="fa fa-refresh" style="color:orange"></i>
                                   </div>
                                 </a>
                                 <div class="collapse" id="disposalproccess">
@@ -47,6 +49,7 @@
                                             <label class="col-sm-2" for="claimformFile">File input</label>
                                             <div class="col-sm-7"><input type="file"></div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-sm-"></div>
                                             <div class="col-sm-7">
@@ -77,7 +80,12 @@
                             <!-- LSR Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
+                                  <div class="col-md-11"> 
+                                      LSR Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-times" style="color:red"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="lsr1">
                                     <div class="box-body">
@@ -91,7 +99,12 @@
                             <!-- Upload LSR -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
+                                  <div class="col-md-11"> 
+                                      Upload LSR
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="lsr2">
                                     <div class="box-body">
@@ -124,7 +137,12 @@
                             <!-- Settlement Offer Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
+                                  <div class="col-md-11"> 
+                                      Settlement Offer Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="settlementoffer1">
                                     <div class="box-body">
@@ -138,7 +156,12 @@
                             <!-- Upload Settlement Offer -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
+                                  <div class="col-md-11"> 
+                                      Upload Settlement Offer
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="settlementoffer2">
                                     <div class="box-body">
@@ -170,7 +193,12 @@
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
+                                  <div class="col-md-11"> 
+                                      Late Explanation
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="latesubmission">                                   
                                     <div class="box-body">
@@ -208,7 +236,12 @@
                             <!-- FBP Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
+                                  <div class="col-md-11"> 
+                                      FBP Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval1">
                                     <div class="box-body">
@@ -222,7 +255,12 @@
                             <!-- Treasury Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
+                                  <div class="col-md-11"> 
+                                      Treasury Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval2">
                                     <div class="box-body">
@@ -236,7 +274,12 @@
                             <!-- QC Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
+                                  <div class="col-md-11"> 
+                                      QC Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval3">
                                     <div class="box-body">
@@ -269,7 +312,12 @@
                             <!-- FBP Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
+                                  <div class="col-md-11"> 
+                                      FBP Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments1">
                                     <div class="box-body">
@@ -283,7 +331,12 @@
                             <!-- Treasury Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
+                                  <div class="col-md-11"> 
+                                      Treasury Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments2">
                                     <div class="box-body">
@@ -297,7 +350,12 @@
                             <!-- QC Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
+                                  <div class="col-md-11"> 
+                                      QC Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments3">
                                     <div class="box-body">
@@ -969,7 +1027,12 @@
                             <!-- LSR Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
+                                  <div class="col-md-11"> 
+                                      LSR Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="lsr1">
                                     <div class="box-body">
@@ -983,7 +1046,12 @@
                             <!-- Upload LSR -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
+                                  <div class="col-md-11"> 
+                                      Upload LSR
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="lsr2">
                                     <div class="box-body">
@@ -1016,7 +1084,12 @@
                             <!-- Settlement Offer Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
+                                  <div class="col-md-11"> 
+                                      Settlement Offer Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="settlementoffer1">
                                     <div class="box-body">
@@ -1030,7 +1103,12 @@
                             <!-- Upload Settlement Offer -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
+                                  <div class="col-md-11"> 
+                                      Upload Settlement Offer
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="settlementoffer2">
                                     <div class="box-body">
@@ -1062,7 +1140,12 @@
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
+                                  <div class="col-md-11"> 
+                                      Late Explanation
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="latesubmission">                                   
                                     <div class="box-body">
@@ -1100,7 +1183,12 @@
                             <!-- FBP Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
+                                  <div class="col-md-11"> 
+                                      FBP Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval1">
                                     <div class="box-body">
@@ -1114,7 +1202,12 @@
                             <!-- Treasury Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
+                                  <div class="col-md-11"> 
+                                      Treasury Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval2">
                                     <div class="box-body">
@@ -1128,7 +1221,12 @@
                             <!-- QC Document Approval -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
+                                  <div class="col-md-11"> 
+                                      QC Document Approval
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="documentapproval3">
                                     <div class="box-body">
@@ -1161,7 +1259,12 @@
                             <!-- FBP Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
+                                  <div class="col-md-11"> 
+                                      FBP Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments1">
                                     <div class="box-body">
@@ -1175,7 +1278,12 @@
                             <!-- Treasury Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
+                                  <div class="col-md-11"> 
+                                      Treasury Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments2">
                                     <div class="box-body">
@@ -1189,7 +1297,12 @@
                             <!-- QC Required Documents -->
                             <div class="box">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
+                                  <div class="col-md-11"> 
+                                      QC Required Documents
+                                  </div>
+                                  <div class="col-md-1"> 
+                                      <i class="fa fa-check" style="color:green"></i>
+                                  </div>
                                 </a>
                                 <div class="collapse" id="requireddocuments3">
                                     <div class="box-body">
