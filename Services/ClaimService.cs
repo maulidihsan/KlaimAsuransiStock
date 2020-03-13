@@ -30,13 +30,19 @@ namespace WebApplication1.Services
         {
             var totalItems = db.Claims.LongCount();
             var itemsOnPage = db.Claims
-                .Select(s => new { ai = s, status = s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault() })
-                .AsEnumerable()
-                .Select(s => s.ai)
+                //.Select(s => new { s, V = s.LatestStatus = s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault().StatusCode })
+                //.AsEnumerable()
+                //.Include(s => s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault())
+                .Select(s => s )
+                .OrderBy(s => s.CreatedAt)
                 .Skip(pageSize * pageIndex)
                 .Take(pageSize)
                 .ToList();
 
+            foreach ( var item in itemsOnPage) {
+                if (item.Statuses.Count > 0)
+                item.LatestStatus = item.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault();
+            }
             return new PaginatedItemsViewModel<Claim>(
                 pageIndex, pageSize, totalItems, itemsOnPage);
         }

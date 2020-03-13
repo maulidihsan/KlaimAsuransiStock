@@ -16,7 +16,238 @@
        <form runat="server">
        <div class="col-md-7">
          <ul class="timeline">
+             <% foreach (var status in claimDetail.Statuses)
+                 { %>
+               <li>
+                   <%  if (!status.Done) { %>
+                   <i class="fa fa-clock-o bg-gray"></i>
+                   <%} else { %>
+                   <i class="fa fa-check bg-green"></i>
+                   <% } %>
 
+                   <div class="timeline-item">
+                       <span class="time">
+                           <a class="btn btn-danger btn-xs">Deadline: <%= (status.ValidUntil - DateTime.Now.Date).Days.ToString() %> hari lagi</a>
+                           <a class="btn btn-primary btn-xs"><%= status.StatusCode %></a>
+                        </span>
+
+                        <h3 class="timeline-header"><%= status.Description %></h3>
+
+                        <div class="timeline-body with-border">
+                            <% if (!status.Done && ((status.ValidUntil - DateTime.Now.Date).Days < 0))
+                                { %>
+                            <div class="box" runat="server">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                  Late Explanation
+                                </a>
+                                <div class="collapse" id="latesubmission">                                   
+                                    <div class="box-body">
+                                        <div class="form-group">
+                                            <label class="col-sm-2" for="claimformFile">Explanation</label>
+                                            <div class="col-sm-7"><asp:TextBox id="ExplanationTxt" TextMode="multiline" CssClass="form-control" runat="server" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="box-footer">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-7">
+                                            <asp:Button ID="ExplanationBtn" CssClass="btn btn-primary" Text="Submit" runat="server" />
+                                        </div>
+                                    </div>                                   
+                                </div>
+                            </div>
+                            <% } %>
+                            <% else { %>
+                            <%  if (status.StatusCode == "IN") { %>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">AIG Claim Form</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="claimform">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplClaimForm">File input</label>
+                                                    <asp:FileUpload id="UplClaimForm" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#suratlaporan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">Surat Laporan Klaim Insiden</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="suratlaporan">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplSuratLaporan">File input</label>
+                                                    <asp:FileUpload id="UplSuratLaporan" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#copyinvoice" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">Invoice Barang</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="copyinvoice">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplCopyInvoice">File input</label>
+                                                    <asp:FileUpload id="UplCopyInvoice" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">LP 1 Bulan Terakhir</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="lp">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplLP">File input</label>
+                                                    <asp:FileUpload id="UplLP" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">Surat Jalan</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="suratjalan">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplSuratJalan">File input</label>
+                                                    <asp:FileUpload id="UplSuratJalan" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">Invoice Pengeluaran Barang</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="invoicepengeluaran">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplInvoicePengeluaran">File input</label>
+                                                    <asp:FileUpload id="UplInvoicePengeluaran" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <a class="box-header bg-gray" data-toggle="collapse" href="#rekap" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                      <div class="col-md-11">Rekap Pengeluaran Barang</div>
+                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                      <div class="col-md-1"> 
+                                        <i class="fa fa-check" style="color:green"></i>
+                                      </div>
+                                      <% } %>
+                                    </a>
+                                    <div class="collapse" id="rekap">
+                                        <div class="box-body">
+                                                <div class="form-group">
+                                                    <label class="col-sm-2" for="UplRekapPengeluaran">File input</label>
+                                                    <asp:FileUpload id="UplRekapPengeluaran" runat="server" ViewStateMode="Enabled" />
+                                                </div>
+                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Any()) { %>
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                </div>
+                                            <% } %>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <asp:Button runat="server" id="Button5" text="Upload" onclick="UploadButton_Click" />
+                                <asp:LinkButton runat="server" id="Button6" CommandArgument="5" text="Ready For Aproval" onclick="Approval_Click" />
+                                <% } %>
+                            <%} %>
+
+                          <%--<div class="box">
+                              <a class="box-header bg-gray" data-toggle="collapse" href="#uploadtreasury" role="button" aria-expanded="false" aria-controls="uploadtreasury">
+                                  FBP Upload
+                              </a>
+                              <div class="collapse" id="uploadtreasury">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                     <label class="col-sm-2" for="InputFile">File input</label>
+                                     <div class="col-sm-7"><input type="file" id="InputFile"></div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label class="col-sm-2">File input</label>
+                                    <div class="col-sm-7"><button type="submit" class="btn btn-primary">Submit</button></div>
+                                    </div>
+                                </div>
+                              </div>
+                          </div>--%>
+
+                        </div>
+                    </div>
+               </li>
+           <% } %>
            <!-- State Awal -->
 
            <!-- Disposal Proccess Awal -->

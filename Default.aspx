@@ -59,13 +59,13 @@
                           <div class="info-box bg-green" style="width: 60%">
                             <div class="info-box-body">
                                 
-                                    <span class="small-box bg-yellow col-md-2">DISP</span>
-                                    <span class="col-md-3 pull-right">5 days left</span>
+                                    <span class="small-box bg-yellow col-md-2"><%# Eval("LatestStatus.StatusCode") %></span>
+                                    <span class="col-md-3 pull-right"><%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days.ToString() %> days left</span>
                                 
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 50%"></div>
+                                        <div class="progress-bar" style='<%# "width:" + ((Convert.ToDateTime(Eval("LatestStatus.ValidFrom")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days * 100) + "%"  %>'></div>
                                     </div>
-                                    <p class="progress-description">50% Increase in 30 Days</p>
+                                    <%--<p class="progress-description"><%#((Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days) * 100 %></p>--%>
                                
                             </div>
                           </div>
@@ -75,9 +75,9 @@
                       <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
                           <td align="center"><a href="Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
                           <td>
-                              Nama PIC : <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
+                              Nama PIC: <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
                               <br/> <br/>
-                              Tanggal Kejadian :<asp:Label ID="Label1" runat="server" Text='<%# Eval("Date")%>' />
+                              Tanggal Kejadian: <asp:Label ID="Label1" runat="server" Text='<%# Eval("Date", "{0:dd MMMM yyyy}")%>' />
                           </td>
                           <td></td>
                           <td></td>
@@ -87,7 +87,7 @@
                                       Deadline
                                   </div>
                                   <div class="box-body">
-                                      21 September 2019
+                                      <%# Eval("LatestStatus.ValidUntil", "{0:dd MMMM yyyy}") %>
                                   </div>
                               </div>
                           </td>

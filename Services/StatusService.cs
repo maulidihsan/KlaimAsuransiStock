@@ -20,6 +20,11 @@ namespace WebApplication1.Services
             return db.Statuses.OrderByDescending(s => s.ValidUntil).FirstOrDefault(s => s.Claim.Id == IdKlaim);
         }
 
+        public Status GetById(int id)
+        {
+            return db.Statuses.Where(s => s.Id == id).FirstOrDefault();
+        }
+
         public void CreateStatus(Status status)
         {
             db.Statuses.Add(status);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Model
 {
@@ -27,5 +28,7 @@ namespace WebApplication1.Model
         public virtual ICollection<Notification> Notifications { get; set; }
         public virtual ICollection<Document> Documents { get; set; }
 
+        [NotMapped]
+        public Status LatestStatus { get; set; }
     }
 }

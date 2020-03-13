@@ -13,5 +13,6 @@ namespace WebApplication1.Services
         void CreateStatus(Status status);
         void UpdateStatus(Status status);
         void RemoveStatus(Status status);
+        Status GetById(int idStatus);
     }
 }
