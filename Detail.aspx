@@ -21,7 +21,7 @@
 
            <!-- Disposal Proccess Awal -->
             <li>
-              <i class="fa fa-refresh bg-orange"></i>
+              <i class="fa fa-check bg-green"></i>
 
                 <div class="timeline-item">
                        <span class="time">
@@ -33,7 +33,7 @@
 
                         <div class="timeline-body with-border">
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess1" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       <div class="col-md-11"> 
                                       Disposal Documentation
@@ -43,7 +43,7 @@
                                       <i class="fa fa-refresh" style="color:orange"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="disposalproccess">
+                                <div class="collapse" id="disposalproccess1">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -79,7 +79,7 @@
                         <div class="timeline-body with-border">
                             <!-- LSR Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr11" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       LSR Approval
                                   </div>
@@ -87,7 +87,7 @@
                                       <i class="fa fa-times" style="color:red"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="lsr1">
+                                <div class="collapse" id="lsr11">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -98,7 +98,7 @@
                             </div>
                             <!-- Upload LSR -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr12" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Upload LSR
                                   </div>
@@ -106,7 +106,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="lsr2">
+                                <div class="collapse" id="lsr12">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -136,7 +136,7 @@
                         <div class="timeline-body with-border">
                             <!-- Settlement Offer Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer11" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Settlement Offer Approval
                                   </div>
@@ -144,7 +144,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="settlementoffer1">
+                                <div class="collapse" id="settlementoffer11">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -155,7 +155,7 @@
                             </div>
                             <!-- Upload Settlement Offer -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer12" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Upload Settlement Offer
                                   </div>
@@ -163,7 +163,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="settlementoffer2">
+                                <div class="collapse" id="settlementoffer12">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -192,7 +192,7 @@
 
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission1" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Late Explanation
                                   </div>
@@ -200,7 +200,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="latesubmission">                                   
+                                <div class="collapse" id="latesubmission1">                                   
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">Explanation</label>
@@ -235,7 +235,7 @@
                         <div class="timeline-body with-border">
                             <!-- FBP Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval11" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       FBP Document Approval
                                   </div>
@@ -243,7 +243,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval1">
+                                <div class="collapse" id="documentapproval11">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -254,7 +254,7 @@
                             </div>
                             <!-- Treasury Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval12" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Treasury Document Approval
                                   </div>
@@ -262,7 +262,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval2">
+                                <div class="collapse" id="documentapproval12">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -273,7 +273,7 @@
                             </div>
                             <!-- QC Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval13" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       QC Document Approval
                                   </div>
@@ -281,7 +281,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval3">
+                                <div class="collapse" id="documentapproval13">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -388,7 +388,7 @@
 
                         <div class="timeline-body with-border">
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess2" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Disposal Documentation
                                   </div>
@@ -396,7 +396,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="disposalproccess">
+                                <div class="collapse" id="disposalproccess2">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -431,10 +431,10 @@
                         <div class="timeline-body with-border">
                             <!-- LSR Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr21" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   LSR Approval
                                 </a>
-                                <div class="collapse" id="lsr1">
+                                <div class="collapse" id="lsr21">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -445,10 +445,10 @@
                             </div>
                             <!-- Upload LSR -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr22" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Upload LSR
                                 </a>
-                                <div class="collapse" id="lsr2">
+                                <div class="collapse" id="lsr22">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -478,10 +478,10 @@
                         <div class="timeline-body with-border">
                             <!-- Settlement Offer Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer21" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Settlement Offer Approval
                                 </a>
-                                <div class="collapse" id="settlementoffer1">
+                                <div class="collapse" id="settlementoffer21">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -492,10 +492,10 @@
                             </div>
                             <!-- Upload Settlement Offer -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer22" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Upload Settlement Offer
                                 </a>
-                                <div class="collapse" id="settlementoffer2">
+                                <div class="collapse" id="settlementoffer22">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -524,10 +524,10 @@
 
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission2" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Late Explanation
                                 </a>
-                                <div class="collapse" id="latesubmission">                                   
+                                <div class="collapse" id="latesubmission2">                                   
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">Explanation</label>
@@ -562,10 +562,10 @@
                         <div class="timeline-body with-border">
                             <!-- FBP Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval21" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   FBP Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval1">
+                                <div class="collapse" id="documentapproval21">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -576,10 +576,10 @@
                             </div>
                             <!-- Treasury Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval22" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Treasury Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval2">
+                                <div class="collapse" id="documentapproval22">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -590,10 +590,10 @@
                             </div>
                             <!-- QC Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval23" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   QC Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval3">
+                                <div class="collapse" id="documentapproval23">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -729,10 +729,10 @@
                         <div class="timeline-body with-border">
                             <!-- LSR Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr31" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   LSR Approval
                                 </a>
-                                <div class="collapse" id="lsr1">
+                                <div class="collapse" id="lsr31">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -743,10 +743,10 @@
                             </div>
                             <!-- Upload LSR -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr32" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Upload LSR
                                 </a>
-                                <div class="collapse" id="lsr2">
+                                <div class="collapse" id="lsr32">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -776,10 +776,10 @@
                         <div class="timeline-body with-border">
                             <!-- Settlement Offer Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer31" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Settlement Offer Approval
                                 </a>
-                                <div class="collapse" id="settlementoffer1">
+                                <div class="collapse" id="settlementoffer31">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -790,10 +790,10 @@
                             </div>
                             <!-- Upload Settlement Offer -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer32" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Upload Settlement Offer
                                 </a>
-                                <div class="collapse" id="settlementoffer2">
+                                <div class="collapse" id="settlementoffer32">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -822,10 +822,10 @@
 
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission3" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Late Explanation
                                 </a>
-                                <div class="collapse" id="latesubmission">                                   
+                                <div class="collapse" id="latesubmission3">                                   
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">Explanation</label>
@@ -860,10 +860,10 @@
                         <div class="timeline-body with-border">
                             <!-- FBP Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval31" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   FBP Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval1">
+                                <div class="collapse" id="documentapproval31">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -874,10 +874,10 @@
                             </div>
                             <!-- Treasury Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval32" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Treasury Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval2">
+                                <div class="collapse" id="documentapproval32">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -888,10 +888,10 @@
                             </div>
                             <!-- QC Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval33" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   QC Document Approval
                                 </a>
-                                <div class="collapse" id="documentapproval3">
+                                <div class="collapse" id="documentapproval33">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -983,7 +983,7 @@
 
                         <div class="timeline-body with-border">
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess3" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Disposal Documentation
                                   </div>
@@ -991,7 +991,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="disposalproccess">
+                                <div class="collapse" id="disposalproccess3">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1026,7 +1026,7 @@
                         <div class="timeline-body with-border">
                             <!-- LSR Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr41" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       LSR Approval
                                   </div>
@@ -1034,7 +1034,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="lsr1">
+                                <div class="collapse" id="lsr41">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1045,7 +1045,7 @@
                             </div>
                             <!-- Upload LSR -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr42" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Upload LSR
                                   </div>
@@ -1053,7 +1053,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="lsr2">
+                                <div class="collapse" id="lsr42">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1083,7 +1083,7 @@
                         <div class="timeline-body with-border">
                             <!-- Settlement Offer Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer41" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Settlement Offer Approval
                                   </div>
@@ -1091,7 +1091,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="settlementoffer1">
+                                <div class="collapse" id="settlementoffer41">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1102,7 +1102,7 @@
                             </div>
                             <!-- Upload Settlement Offer -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer42" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Upload Settlement Offer
                                   </div>
@@ -1110,7 +1110,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="settlementoffer2">
+                                <div class="collapse" id="settlementoffer42">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1139,7 +1139,7 @@
 
                         <div class="timeline-body with-border">
                             <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission4" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Late Explanation
                                   </div>
@@ -1147,7 +1147,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="latesubmission">                                   
+                                <div class="collapse" id="latesubmission4">                                   
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">Explanation</label>
@@ -1182,7 +1182,7 @@
                         <div class="timeline-body with-border">
                             <!-- FBP Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval41" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       FBP Document Approval
                                   </div>
@@ -1190,7 +1190,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval1">
+                                <div class="collapse" id="documentapproval41">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1201,7 +1201,7 @@
                             </div>
                             <!-- Treasury Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval42" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       Treasury Document Approval
                                   </div>
@@ -1209,7 +1209,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval2">
+                                <div class="collapse" id="documentapproval42">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
@@ -1220,7 +1220,7 @@
                             </div>
                             <!-- QC Document Approval -->
                             <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval43" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   <div class="col-md-11"> 
                                       QC Document Approval
                                   </div>
@@ -1228,7 +1228,7 @@
                                       <i class="fa fa-check" style="color:green"></i>
                                   </div>
                                 </a>
-                                <div class="collapse" id="documentapproval3">
+                                <div class="collapse" id="documentapproval43">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label class="col-sm-2" for="claimformFile">File input</label>
