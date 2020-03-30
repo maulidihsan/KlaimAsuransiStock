@@ -90,5 +90,17 @@ namespace WebApplication1.Services
         {
             db.Dispose();
         }
+
+        public bool DokumenLengkap(int idClaim)
+        {
+            var klaim = db.Claims
+                        .Include(s => s.Documents)
+                        .FirstOrDefault(ci => ci.Id == idClaim);
+            var doctype = new List<DocType> { DocType.ClaimFormAIG, DocType.Invoice, DocType.InvoicePengeluaran, DocType.LP1Bulan, DocType.QCReport, DocType.RekapPengeluaran, DocType.SuratJalan, DocType.SuratLaporan };
+            var uploadedTypes = klaim.Documents.Select(i => i.Type).ToList();
+            var set = new HashSet<DocType>(uploadedTypes);
+            return set.SetEquals(doctype);
+        }
+
     }
 }

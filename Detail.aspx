@@ -58,171 +58,392 @@
                             <% } %>
                             <% else { %>
                             <%  if (status.StatusCode == "IN") { %>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">AIG Claim Form</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="claimform">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplClaimForm">File input</label>
-                                                    <asp:FileUpload id="UplClaimForm" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
+                                <asp:PlaceHolder runat="server" ID="FPBUploadView" Visible="false">
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">AIG Claim Form</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="claimform">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplClaimForm">File input</label>
+                                                        <asp:FileUpload id="UplClaimForm" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#suratlaporan" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">Surat Laporan Klaim Insiden</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="suratlaporan">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplSuratLaporan">File input</label>
-                                                    <asp:FileUpload id="UplSuratLaporan" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#suratlaporan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Surat Laporan Klaim Insiden</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="suratlaporan">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplSuratLaporan">File input</label>
+                                                        <asp:FileUpload id="UplSuratLaporan" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#copyinvoice" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">Invoice Barang</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="copyinvoice">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplCopyInvoice">File input</label>
-                                                    <asp:FileUpload id="UplCopyInvoice" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#copyinvoice" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Invoice Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="copyinvoice">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplCopyInvoice">File input</label>
+                                                        <asp:FileUpload id="UplCopyInvoice" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">LP 1 Bulan Terakhir</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="lp">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplLP">File input</label>
+                                                        <asp:FileUpload id="UplLP" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Surat Jalan</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="suratjalan">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplSuratJalan">File input</label>
+                                                        <asp:FileUpload id="UplSuratJalan" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Invoice Pengeluaran Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="invoicepengeluaran">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplInvoicePengeluaran">File input</label>
+                                                        <asp:FileUpload id="UplInvoicePengeluaran" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#rekap" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Rekap Pengeluaran Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="rekap">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplRekapPengeluaran">File input</label>
+                                                        <asp:FileUpload id="UplRekapPengeluaran" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
 
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">LP 1 Bulan Terakhir</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="lp">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplLP">File input</label>
-                                                    <asp:FileUpload id="UplLP" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">Surat Jalan</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="suratjalan">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplSuratJalan">File input</label>
-                                                    <asp:FileUpload id="UplSuratJalan" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
+                                 </asp:PlaceHolder>
+                                <asp:PlaceHolder runat="server" ID="QCUploadView" Visible="false">
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#qcreport" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">QC Report</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="qcreport">
+                                            <div class="box-body">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-2" for="UplQCReport">File input</label>
+                                                        <asp:FileUpload id="UplQCReport" runat="server" ViewStateMode="Enabled" />
+                                                    </div>
+                                                <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).Any()) { %>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                    </div>
+                                                <% } %>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">Invoice Pengeluaran Barang</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="invoicepengeluaran">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplInvoicePengeluaran">File input</label>
-                                                    <asp:FileUpload id="UplInvoicePengeluaran" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="box">
-                                    <a class="box-header bg-gray" data-toggle="collapse" href="#rekap" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                      <div class="col-md-11">Rekap Pengeluaran Barang</div>
-                                      <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
-                                      <div class="col-md-1"> 
-                                        <i class="fa fa-check" style="color:green"></i>
-                                      </div>
-                                      <% } %>
-                                    </a>
-                                    <div class="collapse" id="rekap">
-                                        <div class="box-body">
-                                                <div class="form-group">
-                                                    <label class="col-sm-2" for="UplRekapPengeluaran">File input</label>
-                                                    <asp:FileUpload id="UplRekapPengeluaran" runat="server" ViewStateMode="Enabled" />
-                                                </div>
-                                            <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Any()) { %>
-                                                <div class="form-group">
-                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
-                                                </div>
-                                            <% } %>
-
-                                        </div>
-                                    </div>
-                                </div>
+                                </asp:PlaceHolder>
                                 <asp:Button runat="server" id="Button5" text="Upload" onclick="UploadButton_Click" />
-                                <asp:LinkButton runat="server" id="Button6" CommandArgument="5" text="Ready For Aproval" onclick="Approval_Click" />
+                                <% } %>
+                                <%  if (status.StatusCode == "WA") { %>
+                                    <asp:PlaceHolder runat="server" ID="TreasuryApproveView" Visible="false">
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#claimform1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">AIG Claim Form</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="claimform1">
+                                            <div class="box-body">
+                                               <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">AIG Claim Form</a></div>
+                                               </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="BtnApproveClaimFormAiG" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="BtnRejectClaimFormAiG" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#suratlaporan1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Surat Laporan Klaim Insiden</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="suratlaporan1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Surat Laporan Klaim Insiden</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button9" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button10" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#copyinvoice1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Invoice Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="copyinvoice1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Invoice Barang</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button11" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button12" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#lp1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">LP 1 Bulan Terakhir</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="lp1">
+                                            <div class="box-body">
+                                               <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">LP 1 Bulan Terakhir</a></div>
+                                               </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button13" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button14" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Surat Jalan</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="suratjalan1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Surat Jalan</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button15" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button16" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Invoice Pengeluaran Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="invoicepengeluaran1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Invoice Pengeluaran Barang</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button17" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button18" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#rekap1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">Rekap Pengeluaran Barang</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="rekap1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Rekap Pengeluaran Barang</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button19" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button20" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="box">
+                                        <a class="box-header bg-gray" data-toggle="collapse" href="#qcreport1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                          <div class="col-md-11">QC Report</div>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <div class="col-md-1"> 
+                                            <i class="fa fa-check" style="color:green"></i>
+                                          </div>
+                                          <% } %>
+                                        </a>
+                                        <div class="collapse" id="qcreport1">
+                                            <div class="box-body">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">QC Report</a></div>
+                                                </div>
+                                            </div>
+                                            <div class="box-footer">
+                                                <div class="col-sm-2"></div>
+                                                <div class="col-sm-7">
+                                                    <asp:Button ID="Button21" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button22" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </asp:PlaceHolder>
                                 <% } %>
                             <%} %>
 
@@ -243,7 +464,6 @@
                                 </div>
                               </div>
                           </div>--%>
-
                         </div>
                     </div>
                </li>

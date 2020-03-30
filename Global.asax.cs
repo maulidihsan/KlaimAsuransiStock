@@ -33,6 +33,7 @@ namespace WebApplication1
 
             ConfigureContainer();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
+            AuthConfig.Register();
         }
 
         private void ConfigureContainer()

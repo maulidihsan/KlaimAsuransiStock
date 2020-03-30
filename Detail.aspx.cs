@@ -19,6 +19,9 @@ namespace WebApplication1
         protected Claim claimDetail { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            FPBUploadView.Visible = true;
+            QCUploadView.Visible = true;
+            TreasuryApproveView.Visible = true;
             if (!Page.RouteData.Values.Keys.Contains("id"))
             {
                 Response.Redirect("Default.aspx");
@@ -48,7 +51,7 @@ namespace WebApplication1
                                 OriginalFileName = originalFilename,
                                 FilePath = filePath,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -68,15 +71,19 @@ namespace WebApplication1
                     {
                         if (UplSuratLaporan.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplSuratLaporan.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
                             UplSuratLaporan.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SuratLaporan,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -96,15 +103,19 @@ namespace WebApplication1
                     {
                         if (UplCopyInvoice.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplCopyInvoice.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
                             UplCopyInvoice.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.Invoice,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -124,15 +135,19 @@ namespace WebApplication1
                     {
                         if (UplLP.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplLP.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
                             UplLP.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.LP1Bulan,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -152,15 +167,19 @@ namespace WebApplication1
                     {
                         if (UplSuratJalan.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplSuratJalan.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
                             UplSuratJalan.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SuratJalan,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -180,15 +199,19 @@ namespace WebApplication1
                     {
                         if (UplInvoicePengeluaran.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplInvoicePengeluaran.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
                             UplInvoicePengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.InvoicePengeluaran,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -208,15 +231,19 @@ namespace WebApplication1
                     {
                         if (UplRekapPengeluaran.PostedFile.ContentLength < 102400)
                         {
+                            string originalFilename = UplRekapPengeluaran.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            UplInvoicePengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
+                            UplRekapPengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename);
                             Document newDoc = new Document
                             {
                                 Type = DocType.RekapPengeluaran,
                                 FileName = filename,
+                                OriginalFileName = originalFilename,
                                 FilePath = Server.MapPath("~/Uploads/") + filename,
                                 Approved = false,
-                                ClaimId = Convert.ToInt32(Page.RouteData.Values["id"])
+                                ClaimId = Convert.ToInt32(id)
                             };
                             this.documentService.CreateDocument(newDoc);
                         }
@@ -227,6 +254,55 @@ namespace WebApplication1
 
                 }
             }
+
+            if (UplQCReport.HasFile)
+            {
+                try
+                {
+                    if (UplQCReport.PostedFile.ContentType == "image/jpeg")
+                    {
+                        if (UplQCReport.PostedFile.ContentLength < 102400)
+                        {
+                            string originalFilename = UplQCReport.PostedFile.FileName;
+                            string extensions = System.IO.Path.GetExtension(originalFilename);
+                            string filename = string.Format(@"{0}", Guid.NewGuid());
+                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
+                            UplQCReport.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            Document newDoc = new Document
+                            {
+                                Type = DocType.QCReport,
+                                FileName = filename,
+                                OriginalFileName = originalFilename,
+                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                Approved = false,
+                                ClaimId = Convert.ToInt32(id)
+                            };
+                            this.documentService.CreateDocument(newDoc);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+
+            if (this.claimService.DokumenLengkap(id))
+            {
+                claimDetail.LatestStatus = this.statusService.GetStatus(id);
+                claimDetail.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(claimDetail.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = id,
+                    StatusCode = "WA",
+                    Description = "Waiting for Approval",
+                    Done = false,
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now.AddDays(15)
+                };
+                this.statusService.CreateStatus(status);
+            };
         }
         protected void Approval_Click(object sender, EventArgs e)
         {
@@ -234,17 +310,6 @@ namespace WebApplication1
             Status updateStatus = this.statusService.GetById(Convert.ToInt32(lnk.CommandArgument));
             updateStatus.Done = true;
             this.statusService.UpdateStatus(updateStatus);
-
-            Status status = new Status()
-            {
-                ClaimId = id,
-                StatusCode = "WA",
-                Description = "Waiting for Approval",
-                Done = false,
-                ValidFrom = DateTime.Now,
-                ValidUntil = DateTime.Now.AddDays(15)
-            };
-            this.statusService.CreateStatus(status);
         }
     }
 }
