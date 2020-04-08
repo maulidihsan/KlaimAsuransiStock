@@ -101,6 +101,12 @@ namespace WebApplication1.Services
             var set = new HashSet<DocType>(uploadedTypes);
             return set.SetEquals(doctype);
         }
+        public void AddFeedback(Feedback feedback)
+        {
+            db.Feedbacks.Add(feedback);
+            db.SaveChanges();
+        }
+
 
     }
 }

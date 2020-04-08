@@ -23,6 +23,7 @@ namespace WebApplication1.Model
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public int CustomerFacingId { get; set; }
+        public virtual Feedback Feedback { get; set; } 
         public virtual CustomerFacing CustomerFacing { get; set; }
         public virtual ICollection<Status> Statuses { get; set; }
         public virtual ICollection<Notification> Notifications { get; set; }

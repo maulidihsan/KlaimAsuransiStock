@@ -10,6 +10,8 @@ namespace WebApplication1.Services
     public interface IDocumentService : IDisposable
     {
         void CreateDocument(Document document);
+
+        Document GetDocument(int id);
         void UpdateDocument(Document document);
         void RemoveDocument(Document document);
     }

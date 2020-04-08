@@ -18,5 +18,6 @@ namespace WebApplication1.Model
         public DbSet<Document> Documents { get; set; }
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<LateSubmission> LateSubmissions { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

@@ -17,6 +17,9 @@ namespace WebApplication1.Model
         InvoicePengeluaran = 7,
         RekapPengeluaran = 8,
         BADisposal = 9,
+        SettlementOffer = 10,
+        LSR = 11,
+        Tambahan = 12
     }
     public class Document
     {
@@ -30,6 +33,7 @@ namespace WebApplication1.Model
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public bool  Approved { get; set; }
+        public bool Rejected { get; set; }
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public int ClaimId { get; set; }

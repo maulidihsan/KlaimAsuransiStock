@@ -27,15 +27,16 @@
 
                    <div class="timeline-item">
                        <span class="time">
+                           <% if (!status.Done) { %>
                            <a class="btn btn-danger btn-xs">Deadline: <%= (status.ValidUntil - DateTime.Now.Date).Days.ToString() %> hari lagi</a>
+                           <% } %>
                            <a class="btn btn-primary btn-xs"><%= status.StatusCode %></a>
                         </span>
 
                         <h3 class="timeline-header"><%= status.Description %></h3>
 
                         <div class="timeline-body with-border">
-                            <% if (!status.Done && ((status.ValidUntil - DateTime.Now.Date).Days < 0))
-                                { %>
+                            <% if (!status.Done && ((status.ValidUntil - DateTime.Now.Date).Days < 0)) { %>
                             <div class="box" runat="server">
                                 <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                   Late Explanation
@@ -62,7 +63,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">AIG Claim Form</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).Any())  { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -85,7 +86,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#suratlaporan" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">Surat Laporan Klaim Insiden</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).Any()) { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -108,7 +109,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#copyinvoice" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">Invoice Barang</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).Any()) { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -131,7 +132,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">LP 1 Bulan Terakhir</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).Any())  { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -154,7 +155,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">Surat Jalan</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).Any()) { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -177,7 +178,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">Invoice Pengeluaran Barang</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).Any()) { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -200,7 +201,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#rekap" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">Rekap Pengeluaran Barang</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault()) { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).Any()) { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -226,7 +227,7 @@
                                     <div class="box">
                                         <a class="box-header bg-gray" data-toggle="collapse" href="#qcreport" role="button" aria-expanded="false" aria-controls="uploadfbp">
                                           <div class="col-md-11">QC Report</div>
-                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                          <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).Any())  { %>
                                           <div class="col-md-1"> 
                                             <i class="fa fa-check" style="color:green"></i>
                                           </div>
@@ -269,8 +270,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="BtnApproveClaimFormAiG" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="BtnRejectClaimFormAiG" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="BtnApproveClaimFormAiG" CssClass="btn btn-success" Text="Approve" CommandArgument="ClaimFormAIG" OnClick="Approval_Click" runat="server" />
+                                                    <asp:Button ID="BtnRejectClaimFormAiG" CssClass="btn btn-danger" Text="Reject" CommandArgument="ClaimFormAIG" OnClick="RejectDocument_Click" runat="server" />
                                                 </div>
                                             </div>    
                                         </div>
@@ -293,8 +294,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button9" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button10" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button9" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="SuratLaporan" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button10" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="SuratLaporan" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div> 
                                         </div>
@@ -317,8 +318,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button11" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button12" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button11" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="Invoice" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button12" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="Invoice" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -341,8 +342,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button13" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button14" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button13" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="LP1Bulan" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button14" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="LP1Bulan" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -365,8 +366,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button15" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button16" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button15" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="SuratJalan" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button16" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="SuratJalan" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -389,8 +390,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button17" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button18" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button17" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="InvoicePengeluaran" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button18" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="InvoicePengeluaran" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -413,8 +414,8 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button19" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button20" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button19" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="RekapPengeluaran" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button20" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="RekapPengeluaran" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -437,1227 +438,230 @@
                                             <div class="box-footer">
                                                 <div class="col-sm-2"></div>
                                                 <div class="col-sm-7">
-                                                    <asp:Button ID="Button21" CssClass="btn btn-success" Text="Approve" runat="server" OnClick="Approval_Click" />
-                                                    <asp:Button ID="Button22" CssClass="btn btn-danger" Text="Reject" runat="server" />
+                                                    <asp:Button ID="Button21" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="QCReport" OnClick="Approval_Click" />
+                                                    <asp:Button ID="Button22" CssClass="btn btn-danger" Text="Reject" runat="server" CommandArgument="QCReport" OnClick="RejectDocument_Click" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                  </asp:PlaceHolder>
                                 <% } %>
+                                <% if (status.StatusCode == "SP") { %>
+                                    <asp:PlaceHolder runat="server" ID="TreasuryUploadView" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#suratpengajuan" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">Surat Pengajuan</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratPengajuan).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="suratpengajuan">
+                                                <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2" for="UplSuratPengajuan">File input</label>
+                                                            <asp:FileUpload id="UplSuratPengajuan" runat="server" ViewStateMode="Enabled" />
+                                                        </div>
+                                                    <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratPengajuan).Any()) { %>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratPengajuan).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <asp:Button runat="server" id="Button6" text="Upload" onclick="UploadSuratPengajuan_Click" />
+                                    </asp:PlaceHolder>
+                                <% } %>
+                                <% if (status.StatusCode == "WO") { %>
+                                    <asp:PlaceHolder runat="server" ID="AONApproveView" Visible="false">
+                                        <div class="box">
+                                            <asp:Button runat="server" id="Button24" CssClass="btn btn-success" text="Approve" CommandArgument="approve" onclick="AONAction_Click" />
+                                            <asp:Button runat="server" id="Button25" CssClass="btn btn-warning" text="Give Feedback" CommandArgument="feedback" onclick="AONAction_Click" />
+                                            <asp:PlaceHolder runat="server" ID="AONFeedBackView" Visible="false">
+                                                <asp:textbox id="textarea" textmode="multiline" runat="server"/>
+                                                <asp:Button runat="server" id="Button26" CssClass="btn btn-primary" text="Give Feedback" onclick="SubmitFeedBack_Click" />
+                                            </asp:PlaceHolder>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                <% } %>
+                                <% if (status.StatusCode == "FB") { %>
+                                    <asp:PlaceHolder runat="server" ID="TreasuryBackView" Visible="false">
+                                        <div class="box">
+                                            <p><%= claimDetail.Feedback.Text %></p>
+                                            <div class="form-group">
+                                                <label class="col-sm-2" for="UplLainLain">File input</label>
+                                                <asp:FileUpload id="UplLainLain" runat="server" AllowMultiple="true"  ViewStateMode="Enabled" />
+                                            </div>
+                                            <asp:Button runat="server" id="Button23" CssClass="btn btn-primary" text="Upload" onclick="UploadDokumenTambahan_Click" />
+                                        </div>
+                                    </asp:PlaceHolder>
+                                <% } %>
+                                <% if (status.StatusCode == "SO") { %>
+                                    <asp:PlaceHolder runat="server" ID="AONSettlement" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#settlement" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">Settlement Offer</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SettlementOffer).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="settlement">
+                                                <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2" for="UplSuratPengajuan">File input</label>
+                                                            <asp:FileUpload id="UplSettlementOffer" runat="server" ViewStateMode="Enabled" />
+                                                        </div>
+                                                    <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SettlementOffer).Any()) { %>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SettlementOffer).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <asp:Button runat="server" id="Button27" text="Upload" onclick="UploadSettlement_Click" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="TreasurySettlement" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#settlement1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">QC Report</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SettlementOffer).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="settlement1">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SettlementOffer).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Settlement Offer</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <div class="col-sm-2"></div>
+                                                    <div class="col-sm-7">
+                                                        <asp:Button ID="Button28" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="SettlementOffer" OnClick="Approval_Click" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                <% } %>
+                                <% if (status.StatusCode == "LSR") { %>
+                                    <asp:PlaceHolder runat="server" ID="TreasuryLSR" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#lsr" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">Loss Subrogation Receipt</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LSR).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="lsr">
+                                                <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2" for="UplSuratPengajuan">File input</label>
+                                                            <asp:FileUpload id="UplLSR" runat="server" ViewStateMode="Enabled" />
+                                                        </div>
+                                                    <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LSR).Any()) { %>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LSR).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <asp:Button runat="server" id="Button29" text="Upload" onclick="UploadLSR_Click" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="AONLSR" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">Loss Subrogation Receipt</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LSR).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="lsr1">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LSR).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">LSR</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <div class="col-sm-2"></div>
+                                                    <div class="col-sm-7">
+                                                        <asp:Button ID="Button30" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="LSR" OnClick="Approval_Click" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                <% } %>
+                                <% if (status.StatusCode == "DISP") { %>
+                                    <asp:PlaceHolder runat="server" ID="DisposalUploadView" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#disposal" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">BA Disposal</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.BADisposal).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="disposal">
+                                                <div class="box-body">
+                                                        <div class="form-group">
+                                                            <label class="col-sm-2" for="UplSuratPengajuan">File input</label>
+                                                            <asp:FileUpload id="UplBADisposal" runat="server" ViewStateMode="Enabled" />
+                                                        </div>
+                                                    <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.BADisposal).Any()) { %>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.BADisposal).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">Download</a></div>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <asp:Button runat="server" id="Button31" text="Upload" onclick="UploadDisposal_Click" />
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" ID="DisposalConfirmView" Visible="false">
+                                        <div class="box">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#disposal1" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                              <div class="col-md-11">BA Disposal</div>
+                                              <% if (claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.BADisposal).Select(x => x.Approved).DefaultIfEmpty(false).FirstOrDefault())  { %>
+                                              <div class="col-md-1"> 
+                                                <i class="fa fa-check" style="color:green"></i>
+                                              </div>
+                                              <% } %>
+                                            </a>
+                                            <div class="collapse" id="diposal1">
+                                                <div class="box-body">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12"><a href="<%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.BADisposal).OrderByDescending(x => x.Id).FirstOrDefault().FilePath %>">LSR</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <div class="col-sm-2"></div>
+                                                    <div class="col-sm-7">
+                                                        <asp:Button ID="Button32" CssClass="btn btn-success" Text="Approve" runat="server" CommandArgument="BADisposal" OnClick="Approval_Click" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                <% } %>
                             <%} %>
-
-                          <%--<div class="box">
-                              <a class="box-header bg-gray" data-toggle="collapse" href="#uploadtreasury" role="button" aria-expanded="false" aria-controls="uploadtreasury">
-                                  FBP Upload
-                              </a>
-                              <div class="collapse" id="uploadtreasury">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                     <label class="col-sm-2" for="InputFile">File input</label>
-                                     <div class="col-sm-7"><input type="file" id="InputFile"></div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="col-sm-2">File input</label>
-                                    <div class="col-sm-7"><button type="submit" class="btn btn-primary">Submit</button></div>
-                                    </div>
-                                </div>
-                              </div>
-                          </div>--%>
                         </div>
                     </div>
                </li>
            <% } %>
-           <!-- State Awal -->
-
-           <!-- Disposal Proccess Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">disp</a>
-                        </span>
-
-                        <h3 class="timeline-header">Disposal Proccess</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  <div class="col-md-11"> 
-                                      Disposal Documentation
-                                  </div>
-                                  <div class="col-md-1"> 
-                                      <i class="fa fa-check" style="color:green"></i>
-                                  </div>
-                                </a>
-                                <div class="collapse" id="disposalproccess">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-"></div>
-                                            <div class="col-sm-7">
-                                                <asp:Button ID="BtnSubmitDisp" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-            
-            <!-- LSR Approval Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LSR</a>
-                        </span>
-
-                        <h3 class="timeline-header">LSR Approved</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- LSR Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
-                                </a>
-                                <div class="collapse" id="lsr1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload LSR -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
-                                </a>
-                                <div class="collapse" id="lsr2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Settlement Offer Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">SO</a>
-                        </span>
-
-                        <h3 class="timeline-header">Settlement Offer</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- Settlement Offer Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
-                                </a>
-                                <div class="collapse" id="settlementoffer1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload Settlement Offer -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
-                                </a>
-                                <div class="collapse" id="settlementoffer2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Late Submission Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LS</a>
-                        </span>
-
-                        <h3 class="timeline-header">Late Submission</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
-                                </a>
-                                <div class="collapse" id="latesubmission">                                   
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">Explanation</label>
-                                            <div class="col-sm-7"><asp:TextBox id="tblate" TextMode="multiline" CssClass="form-control" runat="server" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="box-footer">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-7">
-                                            <asp:Button ID="Submitlate" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                        </div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Document Approval Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">DA</a>
-                        </span>
-
-                        <h3 class="timeline-header">Document Approval</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Required Documents Awal -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: document approval</a>
-                           <a class="btn btn-primary btn-xs">IN</a>
-                        </span>
-
-                        <h3 class="timeline-header">Required Documents </h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- State Late -->
-
-            <!-- Disposal Proccess Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">disp</a>
-                        </span>
-
-                        <h3 class="timeline-header">Disposal Proccess</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  <div class="col-md-11"> 
-                                      Disposal Documentation
-                                  </div>
-                                  <div class="col-md-1"> 
-                                      <i class="fa fa-check" style="color:green"></i>
-                                  </div>
-                                </a>
-                                <div class="collapse" id="disposalproccess">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-"></div>
-                                            <div class="col-sm-7">
-                                                <asp:Button ID="Button7" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-            
-            <!-- LSR Approval Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LSR</a>
-                        </span>
-
-                        <h3 class="timeline-header">LSR Approved</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- LSR Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
-                                </a>
-                                <div class="collapse" id="lsr1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload LSR -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
-                                </a>
-                                <div class="collapse" id="lsr2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Settlement Offer Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">SO</a>
-                        </span>
-
-                        <h3 class="timeline-header">Settlement Offer</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- Settlement Offer Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
-                                </a>
-                                <div class="collapse" id="settlementoffer1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload Settlement Offer -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
-                                </a>
-                                <div class="collapse" id="settlementoffer2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Late Submission Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LS</a>
-                        </span>
-
-                        <h3 class="timeline-header">Late Submission</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
-                                </a>
-                                <div class="collapse" id="latesubmission">                                   
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">Explanation</label>
-                                            <div class="col-sm-7"><asp:TextBox id="TextBox4" TextMode="multiline" CssClass="form-control" runat="server" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="box-footer">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-7">
-                                            <asp:Button ID="Button8" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                        </div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Document Approval Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">DA</a>
-                        </span>
-
-                        <h3 class="timeline-header">Document Approval</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Required Documents Akhir -->
-            <li>
-              <i class="fa fa-times bg-red"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: document approval</a>
-                           <a class="btn btn-primary btn-xs">IN</a>
-                        </span>
-
-                        <h3 class="timeline-header">Required Documents </h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-
-            <!-- State Upload -->
-
-            <!-- Disposal Proccess Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">disp</a>
-                        </span>
-
-                        <h3 class="timeline-header">Disposal Proccess</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  <div class="col-md-11"> 
-                                      Disposal Documentation
-                                  </div>
-                                  <div class="col-md-1"> 
-                                      <i class="fa fa-check" style="color:green"></i>
-                                  </div>
-                                </a>
-                                <div class="collapse" id="disposalproccess">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-"></div>
-                                            <div class="col-sm-7">
-                                                <asp:Button ID="Button1" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-            
-            <!-- LSR Approval Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LSR</a>
-                        </span>
-
-                        <h3 class="timeline-header">LSR Approved</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- LSR Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
-                                </a>
-                                <div class="collapse" id="lsr1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload LSR -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
-                                </a>
-                                <div class="collapse" id="lsr2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Settlement Offer Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">SO</a>
-                        </span>
-
-                        <h3 class="timeline-header">Settlement Offer</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- Settlement Offer Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
-                                </a>
-                                <div class="collapse" id="settlementoffer1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload Settlement Offer -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
-                                </a>
-                                <div class="collapse" id="settlementoffer2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Late Submission Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LS</a>
-                        </span>
-
-                        <h3 class="timeline-header">Late Submission</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
-                                </a>
-                                <div class="collapse" id="latesubmission">                                   
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">Explanation</label>
-                                            <div class="col-sm-7"><asp:TextBox id="TextBox1" TextMode="multiline" CssClass="form-control" runat="server" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="box-footer">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-7">
-                                            <asp:Button ID="Button2" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                        </div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Document Approval Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">DA</a>
-                        </span>
-
-                        <h3 class="timeline-header">Document Approval</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Required Documents Approve -->
-            <li>
-              <i class="fa fa-refresh bg-orange"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: document approval</a>
-                           <a class="btn btn-primary btn-xs">IN</a>
-                        </span>
-
-                        <h3 class="timeline-header">Required Documents </h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-            
-            <!-- State Selesai -->
-
-            <!-- Disposal Proccess Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">disp</a>
-                        </span>
-
-                        <h3 class="timeline-header">Disposal Proccess</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#disposalproccess" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  <div class="col-md-11"> 
-                                      Disposal Documentation
-                                  </div>
-                                  <div class="col-md-1"> 
-                                      <i class="fa fa-check" style="color:green"></i>
-                                  </div>
-                                </a>
-                                <div class="collapse" id="disposalproccess">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-"></div>
-                                            <div class="col-sm-7">
-                                                <asp:Button ID="Button3" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-            
-            <!-- LSR Approval Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LSR</a>
-                        </span>
-
-                        <h3 class="timeline-header">LSR Approved</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- LSR Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LSR Approval
-                                </a>
-                                <div class="collapse" id="lsr1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload LSR -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lsr2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload LSR
-                                </a>
-                                <div class="collapse" id="lsr2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Settlement Offer Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">SO</a>
-                        </span>
-
-                        <h3 class="timeline-header">Settlement Offer</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- Settlement Offer Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Settlement Offer Approval
-                                </a>
-                                <div class="collapse" id="settlementoffer1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Upload Settlement Offer -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#settlementoffer2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Upload Settlement Offer
-                                </a>
-                                <div class="collapse" id="settlementoffer2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Late Submission Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">LS</a>
-                        </span>
-
-                        <h3 class="timeline-header">Late Submission</h3>
-
-                        <div class="timeline-body with-border">
-                            <div class="box" runat="server">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#latesubmission" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Late Explanation
-                                </a>
-                                <div class="collapse" id="latesubmission">                                   
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">Explanation</label>
-                                            <div class="col-sm-7"><asp:TextBox id="TextBox2" TextMode="multiline" CssClass="form-control" runat="server" /></div>
-                                        </div>
-                                    </div>
-                                    <div class="box-footer">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-7">
-                                            <asp:Button ID="Button4" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                                        </div>
-                                    </div>                                   
-                                </div>
-                            </div>
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Document Approval Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: 21</a>
-                           <a class="btn btn-primary btn-xs">DA</a>
-                        </span>
-
-                        <h3 class="timeline-header">Document Approval</h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Document Approval -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#documentapproval3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Document Approval
-                                </a>
-                                <div class="collapse" id="documentapproval3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-            <!-- Required Documents Akhir -->
-            <li>
-              <i class="fa fa-check bg-green"></i>
-
-                <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: document approval</a>
-                           <a class="btn btn-primary btn-xs">IN</a>
-                        </span>
-
-                        <h3 class="timeline-header">Required Documents </h3>
-
-                        <div class="timeline-body with-border">
-                            <!-- FBP Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments1" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  FBP Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments1">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Treasury Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments2" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Treasury Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments2">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- QC Required Documents -->
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#requireddocuments3" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Required Documents
-                                </a>
-                                <div class="collapse" id="requireddocuments3">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                </div>
-            </li>
-
-
-
              <!-- end step -->
          </ul>
         </div>
@@ -1708,169 +712,3 @@
    </section>
 
 </asp:Content>
-
-
-<%--<ul class="timeline">
-           <% foreach (var status in claimDetail.Statuses)
-               { %>
-               <li>
-                   <%  if (!status.Done) { %>
-                   <i class="fa fa-clock-o bg-gray"></i>
-                   <%} else { %>
-                   <i class="fa fa-check bg-green"></i>
-                   <% } %>
-
-                   <div class="timeline-item">
-                       <span class="time">
-                           <a class="btn btn-danger btn-xs">Deadline: <%= status.ValidUntil.ToString() %></a>
-                           <a class="btn btn-primary btn-xs"><%= status.StatusCode %></a>
-                        </span>
-
-                        <h3 class="timeline-header"><%= status.Description %></h3>
-
-                        <div class="timeline-body with-border">
-                            <%  if (status.StatusCode == "IN") { %>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#claimform" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  AIG Claim Form
-                                </a>
-                                <div class="collapse" id="claimform">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="claimformFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="claimformFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#laporanklaim" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Surat Laporan Klaim
-                                </a>
-                                <div class="collapse" id="laporanklaim">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="laporanklaimFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="laporanklaimFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#invoicebarang" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Invoice Barang Rusak
-                                </a>
-                                <div class="collapse" id="invoicebarang">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="invoicebarangFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="invoicebarangFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#lp" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  LP 1 bulan terakhir
-                                </a>
-                                <div class="collapse" id="lp">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="lpFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="lpFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#suratjalan" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Surat Jalan 7 Hari Terakhir
-                                </a>
-                                <div class="collapse" id="suratjalan">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="suratjalanFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="suratjalanFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#invoicepengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Invoice Pengeluaran Barang
-                                </a>
-                                <div class="collapse" id="invoicepengeluaran">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="invoicepengeluaranFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="invoicepengeluaranFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#rekappengeluaran" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Rekap pengeluaran barang
-                                </a>
-                                <div class="collapse" id="rekappengeluaran">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="rekappengeluaranFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="rekappengeluaranFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#qcreport" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  QC Report
-                                </a>
-                                <div class="collapse" id="qcreport">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="qcreportFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="qcreportFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box">
-                                <a class="box-header bg-gray" data-toggle="collapse" href="#suratpengajuanklaim" role="button" aria-expanded="false" aria-controls="uploadfbp">
-                                  Surat Pengajuan Klaim
-                                </a>
-                                <div class="collapse" id="suratpengajuanklaim">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label class="col-sm-2" for="suratpengajuanklaimFile">File input</label>
-                                            <div class="col-sm-7"><input type="file" id="suratpengajuanklaimFile"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% } %>
-
-                          <div class="box">
-                              <a class="box-header bg-gray" data-toggle="collapse" href="#uploadtreasury" role="button" aria-expanded="false" aria-controls="uploadtreasury">
-                                  FBP Upload
-                              </a>
-                              <div class="collapse" id="uploadtreasury">
-                                <div class="box-body">
-                                    <div class="form-group">
-                                     <label class="col-sm-2" for="InputFile">File input</label>
-                                     <div class="col-sm-7"><input type="file" id="InputFile"></div>
-                                    </div>
-                                    <div class="form-group">
-                                    <label class="col-sm-2">File input</label>
-                                    <div class="col-sm-7"><button type="submit" class="btn btn-primary">Submit</button></div>
-                                    </div>
-                                </div>
-                              </div>
-                          </div>
-
-                        </div>
-                    </div>
-               </li>
-           <% } %>
-           </ul>--%>
