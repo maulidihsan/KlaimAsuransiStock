@@ -12,7 +12,7 @@
         <li class="active">Dashboard</li>
       </ol>
       <!-- Button Raise Claim -->
-      <a href="RaiseClaim.aspx" class="btn btn-primary">Raise Klaim</a>
+      <a href="/RaiseClaim.aspx" class="btn btn-primary">Raise Klaim</a>
     </section>
 
    <section class="content">
@@ -58,12 +58,12 @@
                         <td>
                           <div class="info-box bg-green" style="width: 60%">
                             <div class="info-box-body">
-                                
                                     <span class="small-box bg-yellow col-md-2"><%# Eval("LatestStatus.StatusCode") %></span>
                                     <span class="col-md-3 pull-right"><%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days.ToString() %> days left</span>
-                                
                                     <div class="progress">
-                                        <div class="progress-bar" style='<%# "width:" + ((Convert.ToDateTime(Eval("LatestStatus.ValidFrom")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days * 100) + "%"  %>'></div>
+                                        <div runat="server" visible="false">
+                                            <div class="progress-bar" style='<%# "width:" + ((Convert.ToDateTime(Eval("LatestStatus.ValidFrom")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days * 100) + "%"  %>'></div>
+                                        </div>
                                     </div>
                                     <%--<p class="progress-description"><%#((Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days) * 100 %></p>--%>
                                

@@ -15,6 +15,15 @@ namespace WebApplication1
     {
 
         /// <summary>
+        /// FBPLateSubmissionView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder FBPLateSubmissionView;
+
+        /// <summary>
         /// ExplanationTxt control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,42 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ExplanationBtn;
+
+        /// <summary>
+        /// TreasuryLateSubmissionView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder TreasuryLateSubmissionView;
+
+        /// <summary>
+        /// ExplanationTxt1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ExplanationTxt1;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
 
         /// <summary>
         /// FPBUploadView control.
@@ -366,13 +411,13 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.Button Button26;
 
         /// <summary>
-        /// TreasuryBackView control.
+        /// TreasuryFeedBackView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder TreasuryBackView;
+        protected global::System.Web.UI.WebControls.PlaceHolder TreasuryFeedBackView;
 
         /// <summary>
         /// UplLainLain control.
@@ -391,6 +436,15 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button23;
+
+        /// <summary>
+        /// AONTambahanDokumen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder AONTambahanDokumen;
 
         /// <summary>
         /// AONSettlement control.

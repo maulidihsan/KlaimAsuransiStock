@@ -43,6 +43,7 @@ namespace WebApplication1
                 Cause = tbInsiden.Text,
                 PICName = "Coba",
                 PICPhone = "080800880",
+                CaseClosed = false,
                 CustomerFacingId = Convert.ToInt32(CFDropdown.SelectedValue)
             };
             claimService.CreateClaim(klaimBaru);

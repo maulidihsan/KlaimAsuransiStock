@@ -24,12 +24,26 @@ namespace WebApplication1
             TreasuryApproveView.Visible = true;
             TreasuryUploadView.Visible = true;
             AONApproveView.Visible = true;
+            AONSettlement.Visible = true;
+            TreasurySettlement.Visible = true;
+            TreasuryLSR.Visible = true;
+            AONLSR.Visible = true;
+            DisposalUploadView.Visible = true;
+            DisposalConfirmView.Visible = true;
+            FBPLateSubmissionView.Visible = true;
+            TreasuryLateSubmissionView.Visible = true;
+            TreasuryFeedBackView.Visible = true;
+            AONTambahanDokumen.Visible = true;
             if (!Page.RouteData.Values.Keys.Contains("id"))
             {
                 Response.Redirect("Default.aspx");
             }
             id = Convert.ToInt32(Page.RouteData.Values["id"]);
             claimDetail = this.claimService.ClaimDetails(id);
+            claimDetail.LatestStatus = statusService.GetStatus(id);
+            if (!claimDetail.LatestStatus.Done && (claimDetail.LatestStatus.ValidUntil - DateTime.Now.Date).Days < 0) {
+                ExplanationTxt1.Text = claimService.GetLateReason(claimDetail.LatestStatus.Id);
+            }
         }
         protected void UploadButton_Click(object sender, EventArgs e)
         {
@@ -333,6 +347,22 @@ namespace WebApplication1
                     }
                 }
             }
+            claimDetail.LatestStatus = this.statusService.GetStatus(id);
+            if (claimDetail.LatestStatus.StatusCode == "FB")
+            {
+                claimDetail.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(claimDetail.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = id,
+                    StatusCode = "SO",
+                    Description = "Settlement Offer",
+                    Done = false,
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now.AddDays(14)
+                };
+                this.statusService.CreateStatus(status);
+            }
         }
 
         protected void UploadSuratPengajuan_Click(object sender, EventArgs e)
@@ -564,8 +594,13 @@ namespace WebApplication1
                     break;
             }
 
+            ApprovalProcess();
+        }
+
+        void ApprovalProcess()
+        {
             claimDetail.LatestStatus = this.statusService.GetStatus(id);
-            if ((this.claimDetail.Documents.Where(x => x.Approved).Count() == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
+            if ((claimDetail.Documents.Where(x => x.Approved).Count() == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
             {
                 claimDetail.LatestStatus.Done = true;
                 this.statusService.UpdateStatus(claimDetail.LatestStatus);
@@ -580,7 +615,19 @@ namespace WebApplication1
                 };
                 this.statusService.CreateStatus(status);
             }
-            if (claimDetail.LatestStatus.StatusCode == "SO")
+            else if (((claimDetail.Documents.Where(x => x.Approved).Count() + claimDetail.Documents.Where(x => x.Rejected).Count()) == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
+            {
+                var documentsToDelete = this.claimDetail.Documents.Where(x => x.Rejected).ToList();
+                foreach (var doc in documentsToDelete)
+                {
+                    this.documentService.RemoveDocument(doc);
+                }
+                this.statusService.RemoveStatus(claimDetail.LatestStatus);
+                claimDetail.LatestStatus = this.statusService.GetStatus(id);
+                claimDetail.LatestStatus.Done = false;
+                this.statusService.UpdateStatus(claimDetail.LatestStatus);
+            }
+            else if (claimDetail.LatestStatus.StatusCode == "SO")
             {
                 claimDetail.LatestStatus.Done = true;
                 this.statusService.UpdateStatus(claimDetail.LatestStatus);
@@ -595,7 +642,7 @@ namespace WebApplication1
                 };
                 this.statusService.CreateStatus(status);
             }
-            if (claimDetail.LatestStatus.StatusCode == "LSR")
+            else if (claimDetail.LatestStatus.StatusCode == "LSR")
             {
                 claimDetail.LatestStatus.Done = true;
                 this.statusService.UpdateStatus(claimDetail.LatestStatus);
@@ -610,9 +657,11 @@ namespace WebApplication1
                 };
                 this.statusService.CreateStatus(status);
             }
-            if (claimDetail.LatestStatus.StatusCode == "DISP")
+            else if (claimDetail.LatestStatus.StatusCode == "DISP")
             {
                 claimDetail.LatestStatus.Done = true;
+                claimDetail.CaseClosed = true;
+                claimService.UpdateClaim(claimDetail);
                 this.statusService.UpdateStatus(claimDetail.LatestStatus);
             }
         }
@@ -673,18 +722,7 @@ namespace WebApplication1
                     this.documentService.UpdateDocument(rejectDocument);
                     break;
             }
-            claimDetail.LatestStatus = this.statusService.GetStatus(id);
-            if (((this.claimDetail.Documents.Where(x => x.Approved).Count() + this.claimDetail.Documents.Where(x => x.Rejected).Count()) == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
-            {
-                foreach ( var doc in this.claimDetail.Documents.Where(x => x.Rejected))
-                {
-                    this.documentService.RemoveDocument(doc);
-                }
-                this.statusService.RemoveStatus(claimDetail.LatestStatus);
-                claimDetail.LatestStatus = this.statusService.GetStatus(id);
-                claimDetail.LatestStatus.Done = false;
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-            }
+            ApprovalProcess();
         }
 
         protected void AONAction_Click(object sender, EventArgs e)
@@ -719,11 +757,8 @@ namespace WebApplication1
         protected void SubmitFeedBack_Click(object sender, EventArgs e)
         {
             claimDetail.LatestStatus = this.statusService.GetStatus(id);
-            Feedback giveFeedback = new Feedback()
-            {
-                Text = textarea.Text
-            };
-            this.claimService.AddFeedback(giveFeedback);
+            claimDetail.Feedback = textarea.Text;
+            this.claimService.UpdateClaim(claimDetail);
             if (claimDetail.LatestStatus.StatusCode == "WO")
             {
                 claimDetail.LatestStatus.Done = true;
@@ -738,6 +773,33 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(14)
                 };
                 this.statusService.CreateStatus(status);
+            }
+        }
+        protected void LateSubmission_Click(object sender, EventArgs e)
+        {
+            claimDetail.LatestStatus = statusService.GetStatus(id);
+            LateSubmission lateSubmission = new LateSubmission()
+            {
+                Reason = ExplanationTxt.Text,
+                StatusId = claimDetail.LatestStatus.Id,
+                Status = claimDetail.LatestStatus
+            };
+            claimService.LateSubmission(lateSubmission);
+            
+        }
+        protected void LateSubmissionAction_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            string action = btn.CommandArgument.ToString();
+            if (action == "accept")
+            {
+                claimDetail.LatestStatus.ValidUntil = DateTime.Now.AddDays(3);
+                statusService.UpdateStatus(claimDetail.LatestStatus);
+            }
+            else if (action == "reject")
+            {
+                claimDetail.CaseClosed = true;
+                claimService.UpdateClaim(claimDetail);
             }
         }
     }

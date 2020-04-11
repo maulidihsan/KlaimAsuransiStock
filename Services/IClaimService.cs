@@ -17,6 +17,7 @@ namespace WebApplication1.Services
         void UpdateClaim(Claim claim);
         void RemoveClaim(int id);
         bool DokumenLengkap(int id);
-        void AddFeedback(Feedback feedback);
+        void LateSubmission(LateSubmission lateSubmission);
+        string GetLateReason(int idStatus);
     }
 }

@@ -30,10 +30,7 @@ namespace WebApplication1.Services
         {
             var totalItems = db.Claims.LongCount();
             var itemsOnPage = db.Claims
-                //.Select(s => new { s, V = s.LatestStatus = s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault().StatusCode })
-                //.AsEnumerable()
-                //.Include(s => s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault())
-                .Select(s => s )
+                .Where(s => !s.CaseClosed )
                 .OrderBy(s => s.CreatedAt)
                 .Skip(pageSize * pageIndex)
                 .Take(pageSize)
@@ -41,7 +38,7 @@ namespace WebApplication1.Services
 
             foreach ( var item in itemsOnPage) {
                 if (item.Statuses.Count > 0)
-                item.LatestStatus = item.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault();
+                item.LatestStatus = item.Statuses.OrderByDescending(o => o.Id).FirstOrDefault();
             }
             return new PaginatedItemsViewModel<Claim>(
                 pageIndex, pageSize, totalItems, itemsOnPage);
@@ -101,12 +98,15 @@ namespace WebApplication1.Services
             var set = new HashSet<DocType>(uploadedTypes);
             return set.SetEquals(doctype);
         }
-        public void AddFeedback(Feedback feedback)
+        public void LateSubmission(LateSubmission lateSubmission)
         {
-            db.Feedbacks.Add(feedback);
+            db.LateSubmissions.Add(lateSubmission);
             db.SaveChanges();
         }
 
-
+        public string GetLateReason(int statusId)
+        {
+            return db.LateSubmissions.Where(x => x.StatusId == statusId).Select(x => x.Reason).DefaultIfEmpty("Reason not submitted yet").FirstOrDefault();
+        }
     }
 }
