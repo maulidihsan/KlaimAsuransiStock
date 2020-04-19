@@ -59,21 +59,24 @@
                           <div class="info-box bg-green" style="width: 60%">
                             <div class="info-box-body">
                                     <span class="small-box bg-yellow col-md-2"><%# Eval("LatestStatus.StatusCode") %></span>
-                                    <span class="col-md-3 pull-right"><%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days.ToString() %> days left</span>
+                                    <asp:PlaceHolder runat="server" Visible='<%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days > 0 %>'>
+                                        <span class="col-md-3 pull-right"><%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days.ToString() %> days left</span>
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder runat="server" Visible='<%# (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days < 0 %>'>
+                                        <span class="col-md-3 pull-right">Melewati deadline</span>
+                                    </asp:PlaceHolder>
                                     <div class="progress">
                                         <div runat="server" visible="false">
                                             <div class="progress-bar" style='<%# "width:" + ((Convert.ToDateTime(Eval("LatestStatus.ValidFrom")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days * 100) + "%"  %>'></div>
                                         </div>
                                     </div>
-                                    <%--<p class="progress-description"><%#((Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - DateTime.Now.Date).Days / (Convert.ToDateTime(Eval("LatestStatus.ValidUntil")) - Convert.ToDateTime(Eval("LatestStatus.ValidFrom"))).Days) * 100 %></p>--%>
-                               
                             </div>
                           </div>
                         </td>
                       </tr>
 
                       <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
-                          <td align="center"><a href="Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
+                          <td align="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
                           <td>
                               Nama PIC: <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
                               <br/> <br/>

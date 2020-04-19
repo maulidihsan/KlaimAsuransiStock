@@ -35,13 +35,6 @@
                </div>
             </div>
          </asp:PlaceHolder>
-         <asp:PlaceHolder runat="server" ID="LogoutButton" Visible="false">
-            <div>
-               <div>
-                  <asp:Button runat="server" OnClick="SignOut" Text="Log out" />
-               </div>
-            </div>
-         </asp:PlaceHolder>
       </div>
     </form>
 </body>

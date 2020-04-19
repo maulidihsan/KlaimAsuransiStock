@@ -21,7 +21,7 @@
             </div>
 
             <!-- form start -->
-            <form class="form-horizontal" runat="server">
+            <form class="form-horizontal">
               <div class="box-body">
                 <!-- Form isi Raise Klaim -->
                 <div class="form-group">

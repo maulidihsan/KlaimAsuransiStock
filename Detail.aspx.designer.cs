@@ -150,6 +150,15 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.FileUpload UplRekapPengeluaran;
 
         /// <summary>
+        /// Button5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button5;
+
+        /// <summary>
         /// QCUploadView control.
         /// </summary>
         /// <remarks>
@@ -168,13 +177,13 @@ namespace WebApplication1
         protected global::System.Web.UI.WebControls.FileUpload UplQCReport;
 
         /// <summary>
-        /// Button5 control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button5;
+        protected global::System.Web.UI.WebControls.Button Button3;
 
         /// <summary>
         /// TreasuryApproveView control.

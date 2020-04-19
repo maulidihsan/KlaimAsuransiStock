@@ -31,9 +31,9 @@ namespace WebApplication1
         protected void SignIn(object sender, EventArgs e)
         {
             var userManager = AuthConfig.UserManagerFactory();
-            var user = userManager.Find(Email.Text, Password.Text);
+            var user = userManager.FindByEmail(Email.Text);
 
-            if (user != null)
+            if (user != null && userManager.CheckPassword(user, Password.Text))
             {
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
@@ -45,13 +45,6 @@ namespace WebApplication1
                 StatusText.Text = "Invalid username or password.";
                 LoginStatus.Visible = true;
             }
-        }
-
-        protected void SignOut(object sender, EventArgs e)
-        {
-            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-            authenticationManager.SignOut();
-            Response.Redirect("~/Login.aspx");
         }
     }
 }

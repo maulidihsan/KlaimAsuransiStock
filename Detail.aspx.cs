@@ -15,25 +15,45 @@ namespace WebApplication1
         public IClaimService claimService { get; set; }
         public IStatusService statusService { get; set; }
         public IDocumentService documentService { get; set; }
+        public INotificationService notificationService { get; set; }
         private Int32 id;
         protected Claim claimDetail { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            FPBUploadView.Visible = true;
-            QCUploadView.Visible = true;
-            TreasuryApproveView.Visible = true;
-            TreasuryUploadView.Visible = true;
-            AONApproveView.Visible = true;
-            AONSettlement.Visible = true;
-            TreasurySettlement.Visible = true;
-            TreasuryLSR.Visible = true;
-            AONLSR.Visible = true;
-            DisposalUploadView.Visible = true;
-            DisposalConfirmView.Visible = true;
-            FBPLateSubmissionView.Visible = true;
-            TreasuryLateSubmissionView.Visible = true;
-            TreasuryFeedBackView.Visible = true;
-            AONTambahanDokumen.Visible = true;
+            if (!IsPostBack)
+            {
+                if (User.IsInRole("FBP") || User.IsInRole ("Admin"))
+                {
+                    FPBUploadView.Visible = true;
+                    FBPLateSubmissionView.Visible = true;
+                }
+                if (User.IsInRole("QC") || User.IsInRole("Admin"))
+                {
+                    QCUploadView.Visible = true;
+                }
+                if (User.IsInRole("LogisticDispo") || User.IsInRole("Admin"))
+                {
+                    DisposalUploadView.Visible = true;
+                }
+                if (User.IsInRole("Treasury") || User.IsInRole("Admin"))
+                {
+                    TreasuryApproveView.Visible = true;
+                    TreasuryUploadView.Visible = true;
+                    TreasurySettlement.Visible = true;
+                    TreasuryLSR.Visible = true;
+                    TreasuryLateSubmissionView.Visible = true;
+                    TreasuryFeedBackView.Visible = true;
+                    DisposalConfirmView.Visible = true;
+                }
+                if (User.IsInRole("AON") || User.IsInRole("Admin"))
+                {
+                    AONApproveView.Visible = true;
+                    AONSettlement.Visible = true;
+                    AONLSR.Visible = true;
+                    AONTambahanDokumen.Visible = true;
+                }
+            }
+           
             if (!Page.RouteData.Values.Keys.Contains("id"))
             {
                 Response.Redirect("Default.aspx");
@@ -318,6 +338,15 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(15)
                 };
                 this.statusService.CreateStatus(status);
+
+                Notification notification = new Notification()
+                {
+                    Message = "Claim documents waiting for approval",
+                    Read = false,
+                    RecipientRole = "Treasury",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             };
         }
 
@@ -362,6 +391,14 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(14)
                 };
                 this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "Settlement offer uploaded",
+                    Read = false,
+                    RecipientRole = "AON",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             }
         }
 
@@ -413,6 +450,14 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(5)
                 };
                 this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "Claim waiting for approval",
+                    Read = false,
+                    RecipientRole = "AON",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             }
         }
 
@@ -641,6 +686,14 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(2)
                 };
                 this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "Settlement approved, waiting for LSR",
+                    Read = false,
+                    RecipientRole = "Treasury",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             }
             else if (claimDetail.LatestStatus.StatusCode == "LSR")
             {
@@ -656,6 +709,14 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(9)
                 };
                 this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "LSR Approved, waiting for BA disposal",
+                    Read = false,
+                    RecipientRole = "LogisticDispo",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             }
             else if (claimDetail.LatestStatus.StatusCode == "DISP")
             {
@@ -773,6 +834,14 @@ namespace WebApplication1
                     ValidUntil = DateTime.Now.AddDays(14)
                 };
                 this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "Feedback from AON",
+                    Read = false,
+                    RecipientRole = "Treasury",
+                    ClaimId = id
+                };
+                this.notificationService.CreateNotification(notification);
             }
         }
         protected void LateSubmission_Click(object sender, EventArgs e)
@@ -785,7 +854,14 @@ namespace WebApplication1
                 Status = claimDetail.LatestStatus
             };
             claimService.LateSubmission(lateSubmission);
-            
+            Notification notification = new Notification()
+            {
+                Message = "Late document submission",
+                Read = false,
+                RecipientRole = "Treasury",
+                ClaimId = id
+            };
+            this.notificationService.CreateNotification(notification);
         }
         protected void LateSubmissionAction_Click(object sender, EventArgs e)
         {

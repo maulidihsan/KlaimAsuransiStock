@@ -15,9 +15,13 @@ namespace WebApplication1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<string> roles = new List<string>() { "Admin", "CF", "FBP", "AON", "QC" };
+            List<string> roles = new List<string>() { "Admin", "Treasury", "FBP", "AON", "QC", "LogisticDispo" };
             if (!IsPostBack)
             {
+                if (!User.IsInRole("Admin"))
+                {
+                    Response.Redirect("/Default.aspx");
+                }
                 RoleDropdown.DataSource = roles;
                 RoleDropdown.DataBind();
             }
@@ -37,10 +41,6 @@ namespace WebApplication1
             if (result.Succeeded)
             {
                 var addToRole = userManager.AddToRole(userManager.FindByEmail(user.Email).Id, RoleDropdown.SelectedValue);
-                var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
-                var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
-                authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
-                Response.Redirect("~/Login.aspx");
             }
             else
             {

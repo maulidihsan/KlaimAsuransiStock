@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace WebApplication1
         {
             if (!this.IsPostBack)
             {
+                if (!(User.IsInRole("Admin") || User.IsInRole("FBP")))
+                {
+                    Response.Redirect("/Default");
+                }
                 listCF = this.customerFacingService.GetCF().ToList();
                 CFDropdown.DataSource = listCF;
                 CFDropdown.DataTextField = "CFArea";

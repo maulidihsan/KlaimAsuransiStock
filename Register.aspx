@@ -12,7 +12,6 @@
 
    <section class="content" runat="server">
        <div class="row">
-           <form runat="server">
                <div class="col-md-12">
                    <h4 style="font-size: medium">Register a new user</h4>
                    <hr />
@@ -54,7 +53,6 @@
                        </div>
                    </div>
                </div>
-           </form>
        </div>
    </section>
 </asp:Content>

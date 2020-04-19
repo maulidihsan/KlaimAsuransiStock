@@ -24,6 +24,9 @@ namespace WebApplication1.Modules
             builder.RegisterType<DocumentService>()
                     .As<IDocumentService>()
                     .InstancePerRequest();
+            builder.RegisterType<NotificationService>()
+                    .As<INotificationService>()
+                    .InstancePerRequest();
             builder.RegisterType<ClaimDB>()
                    .InstancePerLifetimeScope();
         }

@@ -13,7 +13,6 @@
    <section class="content" runat="server">
 
      <div class="row">
-       <form runat="server">
        <div class="col-md-7">
          <ul class="timeline">
              <% foreach (var status in claimDetail.Statuses.OrderByDescending(x => x.Id).ToList())
@@ -266,6 +265,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <% if (!claimDetail.Statuses.Where(x => x.StatusCode == "IN").FirstOrDefault().Done) { %>
+                                    <asp:Button runat="server" id="Button5" text="Upload" CssClass="btn btn-primary" onclick="UploadButton_Click" />
+                                    <% } %>
                                  </asp:PlaceHolder>
                                 <asp:PlaceHolder runat="server" ID="QCUploadView" Visible="false">
                                     <div class="box">
@@ -293,10 +295,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <% if (!claimDetail.Statuses.Where(x => x.StatusCode == "IN").FirstOrDefault().Done) { %>
+                                    <asp:Button runat="server" id="Button3" text="Upload" CssClass="btn btn-primary" onclick="UploadButton_Click" />
+                                    <% } %>
                                 </asp:PlaceHolder>
-                                <% if (!status.Done) { %>
-                                    <asp:Button runat="server" id="Button5" text="Upload" CssClass="btn btn-primary" onclick="UploadButton_Click" />
-                                <% } %>
                                 <% } %>
                                 <% if (status.StatusCode == "WA") { %>
                                     <asp:PlaceHolder runat="server" ID="TreasuryApproveView" Visible="false">
@@ -831,8 +833,6 @@
               </div>            
          </div>
         </div>
-
-        </form>
      </div>
    </section>
 

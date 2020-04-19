@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebApplication1.Model
 {
-    public class User : IdentityUser
+    public class Profile
     {
         public string Name { get; set; }
+        public string Email { get; set; }
+        public List<string> Roles { get; set; }
     }
 }
