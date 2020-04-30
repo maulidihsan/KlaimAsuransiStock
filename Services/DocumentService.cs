@@ -32,6 +32,11 @@ namespace WebApplication1.Services
             db.SaveChanges();
         }
 
+        public Document GetDocument(int id)
+        {
+            return db.Documents.Where(i => i.Id == id).FirstOrDefault();
+        }
+
         public void Dispose()
         {
             db.Dispose();

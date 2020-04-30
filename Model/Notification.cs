@@ -14,6 +14,7 @@ namespace WebApplication1.Model
         public int Id { get; set; }
         public string Message { get; set; }
         public bool Read { get; set; }
+        public string RecipientRole { get; set; }
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public int ClaimId { get; set; }

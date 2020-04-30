@@ -12,9 +12,10 @@ namespace WebApplication1.Services
     {
         private ClaimDB db;
         private IStatusService statusService;
-        public ClaimService(ClaimDB db)
+        public ClaimService(ClaimDB db, IStatusService check)
         {
             this.db = db;
+            this.statusService = check;
         }
 
         public IEnumerable<Claim> GetClaims()
@@ -29,13 +30,16 @@ namespace WebApplication1.Services
         {
             var totalItems = db.Claims.LongCount();
             var itemsOnPage = db.Claims
-                .Select(s => new { ai = s, status = s.Statuses.Where(w => !w.Done).OrderBy(o => o.Id).FirstOrDefault() })
-                .AsEnumerable()
-                .Select(s => s.ai)
+                .Where(s => !s.CaseClosed )
+                .OrderBy(s => s.CreatedAt)
                 .Skip(pageSize * pageIndex)
                 .Take(pageSize)
                 .ToList();
 
+            foreach ( var item in itemsOnPage) {
+                if (item.Statuses.Count > 0)
+                item.LatestStatus = item.Statuses.OrderByDescending(o => o.Id).FirstOrDefault();
+            }
             return new PaginatedItemsViewModel<Claim>(
                 pageIndex, pageSize, totalItems, itemsOnPage);
         }
@@ -43,6 +47,7 @@ namespace WebApplication1.Services
         public Claim ClaimDetails(int id)
         {
             return db.Claims
+                .Include(s => s.CustomerFacing)
                 .Include(s => s.Statuses)
                 .Include(s => s.Documents)
                 .FirstOrDefault(ci => ci.Id == id);
@@ -56,13 +61,13 @@ namespace WebApplication1.Services
             Status status = new Status()
             {
                 ClaimId = claim.Id,
-                StatusCode = "",
-                Description = "",
+                StatusCode = "IN",
+                Description = "Waiting for documents",
                 Done = false,
                 ValidFrom = DateTime.Now,
                 ValidUntil = DateTime.Now.AddDays(15)
             };
-            statusService.CreateStatus(status);
+            this.statusService.CreateStatus(status);
         }
 
         public void UpdateClaim(Claim claim)
@@ -81,6 +86,27 @@ namespace WebApplication1.Services
         public void Dispose()
         {
             db.Dispose();
+        }
+
+        public bool DokumenLengkap(int idClaim)
+        {
+            var klaim = db.Claims
+                        .Include(s => s.Documents)
+                        .FirstOrDefault(ci => ci.Id == idClaim);
+            var doctype = new List<DocType> { DocType.ClaimFormAIG, DocType.Invoice, DocType.InvoicePengeluaran, DocType.LP1Bulan, DocType.QCReport, DocType.RekapPengeluaran, DocType.SuratJalan, DocType.SuratLaporan };
+            var uploadedTypes = klaim.Documents.Select(i => i.Type).ToList();
+            var set = new HashSet<DocType>(uploadedTypes);
+            return set.SetEquals(doctype);
+        }
+        public void LateSubmission(LateSubmission lateSubmission)
+        {
+            db.LateSubmissions.Add(lateSubmission);
+            db.SaveChanges();
+        }
+
+        public string GetLateReason(int statusId)
+        {
+            return db.LateSubmissions.Where(x => x.StatusId == statusId).Select(x => x.Reason).DefaultIfEmpty("Reason not submitted yet").FirstOrDefault();
         }
     }
 }

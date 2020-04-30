@@ -8,19 +8,18 @@ namespace WebApplication1.Model
     public enum DocType
     {
         SuratPengajuan = 0,
-        InvoiceCargo = 1,
-        Foto = 2,
-        KargoRusak = 3,
-        BABarangRusak = 4,
-        BAKejadian = 5,
-        LaporanBencana = 6,
-        LP1 = 7,
-        SuratJalan = 8,
-        InvoicePengeluranBarang = 9,
-        RekapPengeluaranBarang = 10,
-        BADisposal = 11,
-        BAKeterlambatan = 12,
-        SuratPindahAlamat = 13
+        ClaimFormAIG = 1,
+        SuratLaporan = 2,
+        Invoice = 3,
+        QCReport = 4,
+        LP1Bulan = 5,
+        SuratJalan = 6,
+        InvoicePengeluaran = 7,
+        RekapPengeluaran = 8,
+        BADisposal = 9,
+        SettlementOffer = 10,
+        LSR = 11,
+        Tambahan = 12
     }
     public class Document
     {
@@ -30,9 +29,11 @@ namespace WebApplication1.Model
         }
         public int Id { get; set; }
         public DocType Type { get; set; }
+        public string OriginalFileName { get; set; }
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public bool  Approved { get; set; }
+        public bool Rejected { get; set; }
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public int ClaimId { get; set; }

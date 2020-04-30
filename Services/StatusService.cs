@@ -17,7 +17,12 @@ namespace WebApplication1.Services
 
         public Status GetStatus(int IdKlaim)
         {
-            return db.Statuses.OrderByDescending(s => s.ValidUntil).FirstOrDefault(s => s.Claim.Id == IdKlaim);
+            return db.Statuses.OrderByDescending(s => s.Id).FirstOrDefault(s => s.Claim.Id == IdKlaim);
+        }
+
+        public Status GetById(int id)
+        {
+            return db.Statuses.Where(s => s.Id == id).FirstOrDefault();
         }
 
         public void CreateStatus(Status status)

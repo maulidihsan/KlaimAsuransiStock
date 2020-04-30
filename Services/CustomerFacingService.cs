@@ -4,7 +4,6 @@ using System.Linq;
 using System.Data.Entity;
 using System.Web;
 using WebApplication1.Model;
-using WebApplication1.ViewModel;
 
 namespace WebApplication1.Services
 {
@@ -18,8 +17,8 @@ namespace WebApplication1.Services
 
         public IEnumerable<CustomerFacing> GetCF()
         {
-            return db.CustomerFacings
-                .ToList();
+            return this.db.CustomerFacings
+                .ToList(); ;
         }
 
         public void AddCF(CustomerFacing cf)
