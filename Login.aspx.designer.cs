@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
-{
-
-
-    public partial class Login
-    {
-
+namespace WebApplication1 {
+    
+    
+    public partial class Login {
+        
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
+        
         /// <summary>
         /// LoginStatus control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder LoginStatus;
-
+        
         /// <summary>
         /// StatusText control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal StatusText;
-
+        
         /// <summary>
         /// LoginForm control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder LoginForm;
-
+        
         /// <summary>
         /// Email control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Email;
-
+        
         /// <summary>
         /// Password control.
         /// </summary>

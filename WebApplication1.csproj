@@ -173,6 +173,7 @@
     <Content Include="Content\dist\img\avatar2.png" />
     <Content Include="Content\dist\img\avatar3.png" />
     <Content Include="Content\dist\img\avatar5.png" />
+    <Content Include="Content\dist\img\background.png" />
     <Content Include="Content\dist\img\credit\american-express.png" />
     <Content Include="Content\dist\img\credit\cirrus.png" />
     <Content Include="Content\dist\img\credit\mastercard.png" />
@@ -182,6 +183,7 @@
     <Content Include="Content\dist\img\credit\visa.png" />
     <Content Include="Content\dist\img\default-50x50.gif" />
     <Content Include="Content\dist\img\icons.png" />
+    <Content Include="Content\dist\img\Panel.png" />
     <Content Include="Content\dist\img\photo1.png" />
     <Content Include="Content\dist\img\photo2.png" />
     <Content Include="Content\dist\img\photo3.jpg" />
@@ -325,10 +327,21 @@
     <Compile Include="Migrations\202004080705516_AddFeedback.Designer.cs">
       <DependentUpon>202004080705516_AddFeedback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004101309577_AddCaseClosed.cs" />
+    <Compile Include="Migrations\202004101309577_AddCaseClosed.Designer.cs">
+      <DependentUpon>202004101309577_AddCaseClosed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004110132165_RemoveFeedback.cs" />
+    <Compile Include="Migrations\202004110132165_RemoveFeedback.Designer.cs">
+      <DependentUpon>202004110132165_RemoveFeedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004121352283_AddRoleRecipient.cs" />
+    <Compile Include="Migrations\202004121352283_AddRoleRecipient.Designer.cs">
+      <DependentUpon>202004121352283_AddRoleRecipient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\CustomerFacing.cs" />
-    <Compile Include="Model\Feedback.cs" />
-    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Profile.cs" />
     <Compile Include="Modules\ApplicationModule.cs" />
     <Compile Include="Modules\IdentityModule.cs" />
     <Compile Include="RaiseClaim.aspx.cs">
@@ -347,6 +360,7 @@
     </Compile>
     <Compile Include="Services\CustomerFacingService.cs" />
     <Compile Include="Services\ICustomerFacingService.cs" />
+    <Compile Include="Services\INotificationService.cs" />
     <Compile Include="Services\IStatusService.cs" />
     <Compile Include="Services\IDocumentService.cs" />
     <Compile Include="Services\DocumentService.cs" />
@@ -362,6 +376,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ClaimService.cs" />
     <Compile Include="Services\IClaimService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -414,6 +429,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004080705516_AddFeedback.resx">
       <DependentUpon>202004080705516_AddFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004101309577_AddCaseClosed.resx">
+      <DependentUpon>202004101309577_AddCaseClosed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110132165_RemoveFeedback.resx">
+      <DependentUpon>202004110132165_RemoveFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004121352283_AddRoleRecipient.resx">
+      <DependentUpon>202004121352283_AddRoleRecipient.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

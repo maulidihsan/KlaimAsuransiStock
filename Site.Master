@@ -125,6 +125,7 @@
       </form>--%>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
+
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">INSURANCE</li>
 
@@ -164,7 +165,7 @@
             </a>
         </li>
 
-        <%--Menu Stock at Distribution--%>
+        <%--Menu Regiter New User--%>
         <li>
             <a href="/Register.aspx">
                 <i class="fa fa-dashboard"></i> 
@@ -181,12 +182,9 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    
+  <div class="content-wrapper">   
 
-    <!-- Main content -->
-  
+        <!-- Main content -->  
         <asp:ContentPlaceHolder ID="MainContent" runat="server">
         </asp:ContentPlaceHolder>
    
@@ -194,7 +192,7 @@
 
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+      Insurance Claim
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
