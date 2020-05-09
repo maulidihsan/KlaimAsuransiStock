@@ -11,7 +11,6 @@
    </section>
 
    <section class="content" runat="server">
-
      <div class="row">
        <div class="col-md-7">
          <ul class="timeline">
@@ -835,5 +834,4 @@
         </div>
      </div>
    </section>
-
 </asp:Content>
