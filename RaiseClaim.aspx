@@ -23,30 +23,30 @@
                     <!-- form start -->
                     <div class="box-body">
                         <!-- Form isi Raise Klaim -->
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Nama Distributor</label>
                           <div class="col-sm-7"><asp:TextBox id="tbNama" CssClass="form-control" runat="server" /></div>
                         </div>
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Kode Distributor</label>
                           <div class="col-sm-7"><asp:TextBox id="tbKode" CssClass="form-control" runat="server" /></div>
                         </div>
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Insiden Klaim</label>
                           <div class="col-sm-7"><asp:TextBox id="tbInsiden" CssClass="form-control" runat="server" /></div>
                         </div>
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Tanggal Kejadian</label>
                           <div class="col-sm-7"><asp:TextBox id="tbTanggal" CssClass="form-control" textmode="date" runat="server" /></div>
                         </div>
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                         <label class="col-sm-3 control-label">Area</label>
                             <div class="col-sm-7">
                                 <asp:DropDownList ID="CFDropdown" CssClass="form-control select2" AutoPostBack="True" onselectedindexchanged="cfSelected" runat="server">
                                 </asp:DropDownList>
                             </div>
                         </div>
-                        <div>
+                        <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">CF to be Notified</label>
                           <div class="col-sm-7">
                               <asp:TextBox id="tbCF" CssClass="form-control" Enabled="false" runat="server" />
@@ -55,11 +55,13 @@
                       </div>
 
                     <div class="box-footer">
-                        <!-- button submit raise claim -->              
-                        <div class="col-sm-3"></div>
-                        <div class="col-sm-7">
-                            <asp:Button ID="Submit" OnClick="Submit_Click" CssClass="btn btn-primary" Text="Submit" runat="server" />
-                        </div>              
+                        <div class="row">
+                            <!-- button submit raise claim -->              
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-7">
+                                <asp:Button ID="Submit" OnClick="Submit_Click" CssClass="btn btn-primary" Text="Submit" runat="server" />
+                            </div>           
+                        </div>
                     </div>
 
                 </div>

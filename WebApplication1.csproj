@@ -231,6 +231,7 @@
     <Content Include="ManageRoles.aspx" />
     <Content Include="RaiseClaim.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="RegisterCF.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -357,6 +358,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterCF.aspx.cs">
+      <DependentUpon>RegisterCF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterCF.aspx.designer.cs">
+      <DependentUpon>RegisterCF.aspx</DependentUpon>
     </Compile>
     <Compile Include="Services\CustomerFacingService.cs" />
     <Compile Include="Services\ICustomerFacingService.cs" />
