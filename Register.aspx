@@ -9,7 +9,8 @@
 
    <section class="content" runat="server">
        <div class="row">
-            <div class="col-md-6">
+           <h2></h2>
+            <div class="col-md-5">
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h1 class="box-title">Register a new user</h1>
@@ -38,12 +39,44 @@
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-3"></div>
-                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" OnClick="CreateUser_Click" Text="Register" /></div>
+                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" OnClick="CreateUser_Click" Text="Register" /></div>                                
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="box box-info">
+                   <div class="box-header with-border">
+                        <h1 class="box-title">List User</h1>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                      <th>Nama</th>
+                                      <th>Email</th>
+                                      <th>Role</th>
+                                      <th></th>                                      
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Joko</td>
+                                      <td>joko@email.com</td>
+                                      <td>Admin</td>
+                                      <td><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>                     
+
+                        </div>
+                    </div>
+               </div>
+            </div>
        </div>
+
    </section>
 </asp:Content>
 

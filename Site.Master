@@ -16,7 +16,7 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition fixed skin-blue sidebar-mini">
 <form runat="server">
 <div class="wrapper" runat="server">
 
@@ -132,7 +132,7 @@
         <%--Menu Marine Cargo--%>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Marine Cargo</span>
+            <i class="fa fa-ship"></i> <span>Marine Cargo</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -146,7 +146,7 @@
         <%--Menu Import--%>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Import</span>
+            <i class="fa fa-cubes"></i> <span>Import</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -160,15 +160,17 @@
         <%--Menu Stock at Distribution--%>
         <li>
             <a href="/Default.aspx">
-                <i class="fa fa-dashboard"></i> 
+                <i class="fa fa-truck"></i> 
                 <span>Stock at Distribution</span>
             </a>
         </li>
 
+                
+        <li class="header">ACCOUNT</li>        
         <%--Menu Regiter New User--%>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Register</span>
+            <i class="fa fa-user-plus"></i> <span>Register</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -178,9 +180,7 @@
             <li><a href="/RegisterCF.aspx"><i class="fa fa-circle-o"></i> New CF</a></li>
           </ul>
         </li>
-        
-        <li class="header">ACCOUNT</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Change Password</span></a></li>
+        <li><a href="#"><i class="fa fa-lock"></i> <span>Change Password</span></a></li>
         
       </ul>
     </section>
