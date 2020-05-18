@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
-{
-
-
-    public partial class Register
-    {
-
+namespace WebApplication1 {
+    
+    
+    public partial class Register {
+        
         /// <summary>
         /// StatusMessage control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal StatusMessage;
-
+        
         /// <summary>
         /// Name control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Name;
-
+        
         /// <summary>
         /// Email control.
         /// </summary>
@@ -40,7 +38,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Email;
-
+        
         /// <summary>
         /// Password control.
         /// </summary>
@@ -49,7 +47,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Password;
-
+        
         /// <summary>
         /// ConfirmPassword control.
         /// </summary>
@@ -58,7 +56,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
-
+        
         /// <summary>
         /// RoleDropdown control.
         /// </summary>

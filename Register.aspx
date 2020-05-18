@@ -9,53 +9,74 @@
 
    <section class="content" runat="server">
        <div class="row">
-            <div class="col-md-8">
+           <h2></h2>
+            <div class="col-md-5">
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h1 class="box-title">Register a new user</h1>
                     </div>
                     <div class="box-body">
-                        <p>
-                        <asp:Literal runat="server" ID="StatusMessage" />
-                        </p>                
-                        <div style="margin-bottom:10px">
-                            <asp:Label runat="server" AssociatedControlID="Name">Nama</asp:Label>
-                            <div>
-                                <asp:TextBox runat="server" ID="Name" />                
-                            </div>
+                        <p><asp:Literal runat="server" ID="StatusMessage" /></p>                
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="Name">Nama</asp:Label></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="Name" /></div>
                         </div>
-                        <div style="margin-bottom:10px">
-                            <asp:Label runat="server" AssociatedControlID="Email">Email</asp:Label>
-                            <div>
-                                <asp:TextBox runat="server" TextMode="Email" ID="Email" />                
-                            </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="Email">Email</asp:Label></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" TextMode="Email" ID="Email" /></div>
                         </div>
-                        <div style="margin-bottom:10px">
-                            <asp:Label runat="server" AssociatedControlID="Password">Password</asp:Label>
-                            <div>
-                                <asp:TextBox runat="server" ID="Password" TextMode="Password" />                
-                            </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="Password">Password</asp:Label></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="Password" TextMode="Password" /></div>
                         </div>
-                        <div style="margin-bottom:10px">
-                            <asp:Label runat="server" AssociatedControlID="ConfirmPassword">Confirm password</asp:Label>
-                            <div>
-                                <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" />                
-                            </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="ConfirmPassword">Confirm password</asp:Label></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="ConfirmPassword" TextMode="Password" /></div>
                         </div>
-                        <div style="margin-bottom:10px">
-                            <asp:Label runat="server" AssociatedControlID="RoleDropdown">Role</asp:Label>
-                            <asp:DropDownList ID="RoleDropdown" CssClass="form-control select2" AutoPostBack="True" runat="server">
-                            </asp:DropDownList>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="RoleDropdown">Role</asp:Label></div>
+                            <div class="col-md-7"><asp:DropDownList ID="RoleDropdown" CssClass="form-control select2" AutoPostBack="True" runat="server"></asp:DropDownList></div>
                         </div>
-                        <div>
-                            <div>
-                                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" />
-                            </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" OnClick="CreateUser_Click" Text="Register" /></div>                                
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-6">
+                <div class="box box-info">
+                   <div class="box-header with-border">
+                        <h1 class="box-title">List User</h1>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                    <tr>
+                                      <th>Nama</th>
+                                      <th>Email</th>
+                                      <th>Role</th>
+                                      <th></th>                                      
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                      <td>Joko</td>
+                                      <td>joko@email.com</td>
+                                      <td>Admin</td>
+                                      <td><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete" /></td>
+                                    </tr>
+                                </tbody>
+                            </table>                     
+
+                        </div>
+                    </div>
+               </div>
+            </div>
        </div>
+
    </section>
 </asp:Content>
 
