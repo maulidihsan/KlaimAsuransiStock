@@ -19,19 +19,19 @@
                         <p><asp:Literal runat="server" ID="StatusMessage" /></p>   
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Lokasi</asp:Label></div>
-                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="lokasiCF" /></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbLokasiCF" /></div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Nama</asp:Label></div>
-                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="Name" /></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbName" /></div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Email</asp:Label></div>
-                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="Email" /></div>
+                            <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbEmail" /></div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"></div>
-                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" Text="Register" /></div>
+                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" Text="Register" OnClick="CreateCF_Click" /></div>
                         </div>
                     </div>
                 </div>
@@ -43,24 +43,38 @@
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                      <th>Lokasi</th>
-                                      <th>Nama</th>
-                                      <th>Email</th>
-                                      <th></th>                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Jawa</td>
-                                      <td>Lia</td>
-                                      <td>lia@email.com</td>
-                                      <td><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete" /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <asp:ListView ID="CFListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.CustomerFacing" runat="server">
+                                <EmptyDataTemplate>
+                                    <table>
+                                        <tr>
+                                            <td>No data was returned.</td>
+                                        </tr>
+                                    </table>
+                                </EmptyDataTemplate>
+                                <LayoutTemplate>
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                              <th>Lokasi</th>
+                                              <th>Nama</th>
+                                              <th>Email</th>
+                                              <th></th>                                      
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr runat="server" id="itemPlaceholder" />
+                                        </tbody>
+                                    </table>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                  <tr>
+                                    <td><asp:Label ID="Label1" runat="server" Text='<%# Eval("CFArea")%>' /></td>
+                                    <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("CFName")%>' /></td>
+                                    <td><asp:Label ID="Label3" runat="server" Text='<%# Eval("CFEmail")%>' /></td>
+                                    <td><asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Id")%>' OnClick="DeleteCF_Click" /></td>
+                                  </tr>
+                                </ItemTemplate>
+                          </asp:ListView>
                         </div>
                     </div>
                </div>
