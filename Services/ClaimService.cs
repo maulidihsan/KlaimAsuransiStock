@@ -31,7 +31,7 @@ namespace WebApplication1.Services
             var totalItems = db.Claims.LongCount();
             var itemsOnPage = db.Claims
                 .Where(s => !s.CaseClosed )
-                .OrderBy(s => s.CreatedAt)
+                .OrderByDescending(s => s.CreatedAt)
                 .Skip(pageSize * pageIndex)
                 .Take(pageSize)
                 .ToList();
