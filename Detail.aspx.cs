@@ -12,12 +12,24 @@ namespace WebApplication1
 {
     public partial class Detail : System.Web.UI.Page
     {
+        private Int32 MAX_FILE_SIZE = 10485760;
         public IClaimService claimService { get; set; }
         public IStatusService statusService { get; set; }
         public IDocumentService documentService { get; set; }
         public INotificationService notificationService { get; set; }
         private Int32 id;
         protected Claim claimDetail { get; set; }
+        protected List<string> docType = new List<string>() { 
+            "image/jpeg",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "image/png",
+            "application/pdf",
+            "application/vnd.ms-excel",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/zip",
+            "application/vnd.rar"
+        };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -71,15 +83,15 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplClaimForm.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplClaimForm.PostedFile.ContentType))
                     {
-                        if (UplClaimForm.PostedFile.ContentLength < 102400)
+                        if (UplClaimForm.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplClaimForm.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplClaimForm.SaveAs(filePath);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplClaimForm.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.ClaimFormAIG,
@@ -103,21 +115,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplSuratLaporan.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplSuratLaporan.PostedFile.ContentType))
                     {
-                        if (UplSuratLaporan.PostedFile.ContentLength < 102400)
+                        if (UplSuratLaporan.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplSuratLaporan.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplSuratLaporan.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplSuratLaporan.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SuratLaporan,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -135,21 +147,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplCopyInvoice.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplCopyInvoice.PostedFile.ContentType))
                     {
-                        if (UplCopyInvoice.PostedFile.ContentLength < 102400)
+                        if (UplCopyInvoice.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplCopyInvoice.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplCopyInvoice.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplCopyInvoice.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.Invoice,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -167,21 +179,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplLP.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplLP.PostedFile.ContentType))
                     {
-                        if (UplLP.PostedFile.ContentLength < 102400)
+                        if (UplLP.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplLP.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplLP.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplLP.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.LP1Bulan,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -199,21 +211,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplSuratJalan.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplSuratJalan.PostedFile.ContentType))
                     {
-                        if (UplSuratJalan.PostedFile.ContentLength < 102400)
+                        if (UplSuratJalan.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplSuratJalan.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplSuratJalan.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplSuratJalan.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SuratJalan,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -231,21 +243,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplInvoicePengeluaran.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplInvoicePengeluaran.PostedFile.ContentType))
                     {
-                        if (UplInvoicePengeluaran.PostedFile.ContentLength < 102400)
+                        if (UplInvoicePengeluaran.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplInvoicePengeluaran.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplInvoicePengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplInvoicePengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.InvoicePengeluaran,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -263,21 +275,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplRekapPengeluaran.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplRekapPengeluaran.PostedFile.ContentType))
                     {
-                        if (UplRekapPengeluaran.PostedFile.ContentLength < 102400)
+                        if (UplRekapPengeluaran.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplRekapPengeluaran.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplRekapPengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplRekapPengeluaran.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.RekapPengeluaran,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath = filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -295,21 +307,21 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplQCReport.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplQCReport.PostedFile.ContentType))
                     {
-                        if (UplQCReport.PostedFile.ContentLength < 102400)
+                        if (UplQCReport.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplQCReport.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplQCReport.SaveAs(Server.MapPath("~/Uploads/") + filename);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplQCReport.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.QCReport,
                                 FileName = filename,
                                 OriginalFileName = originalFilename,
-                                FilePath = Server.MapPath("~/Uploads/") + filename,
+                                FilePath =filePath,
                                 Approved = false,
                                 ClaimId = Convert.ToInt32(id)
                             };
@@ -354,15 +366,15 @@ namespace WebApplication1
         {
             foreach (HttpPostedFile postedFile in UplLainLain.PostedFiles)
             {
-                if (postedFile.ContentType == "image/jpeg")
+                if (docType.Contains(postedFile.ContentType))
                 {
-                    if (postedFile.ContentLength < 102400)
+                    if (postedFile.ContentLength < this.MAX_FILE_SIZE)
                     {
                         string originalFilename = postedFile.FileName;
                         string extensions = System.IO.Path.GetExtension(originalFilename);
                         string filename = string.Format(@"{0}", Guid.NewGuid());
-                        string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                        postedFile.SaveAs(filePath);
+                        string filePath = "/Uploads/" + filename + extensions;
+                        postedFile.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                         Document newDoc = new Document
                         {
                             Type = DocType.Tambahan,
@@ -408,15 +420,15 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplSuratPengajuan.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplSuratPengajuan.PostedFile.ContentType))
                     {
-                        if (UplSuratPengajuan.PostedFile.ContentLength < 102400)
+                        if (UplSuratPengajuan.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplSuratPengajuan.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplSuratPengajuan.SaveAs(filePath);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplSuratPengajuan.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SuratPengajuan,
@@ -467,15 +479,15 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplLSR.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplLSR.PostedFile.ContentType))
                     {
-                        if (UplLSR.PostedFile.ContentLength < 102400)
+                        if (UplLSR.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplLSR.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplLSR.SaveAs(filePath);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplLSR.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.LSR,
@@ -502,15 +514,15 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplSettlementOffer.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplSettlementOffer.PostedFile.ContentType))
                     {
-                        if (UplSettlementOffer.PostedFile.ContentLength < 102400)
+                        if (UplSettlementOffer.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplSettlementOffer.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplSettlementOffer.SaveAs(filePath);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplSettlementOffer.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.SettlementOffer,
@@ -537,15 +549,15 @@ namespace WebApplication1
             {
                 try
                 {
-                    if (UplBADisposal.PostedFile.ContentType == "image/jpeg")
+                    if (docType.Contains(UplBADisposal.PostedFile.ContentType))
                     {
-                        if (UplBADisposal.PostedFile.ContentLength < 102400)
+                        if (UplBADisposal.PostedFile.ContentLength < this.MAX_FILE_SIZE)
                         {
                             string originalFilename = UplBADisposal.PostedFile.FileName;
                             string extensions = System.IO.Path.GetExtension(originalFilename);
                             string filename = string.Format(@"{0}", Guid.NewGuid());
-                            string filePath = Server.MapPath("~/Uploads/") + filename + extensions;
-                            UplBADisposal.SaveAs(filePath);
+                            string filePath = "/Uploads/" + filename + extensions;
+                            UplBADisposal.SaveAs(Server.MapPath("~/Uploads/") + filename + extensions);
                             Document newDoc = new Document
                             {
                                 Type = DocType.BADisposal,
