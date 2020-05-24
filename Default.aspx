@@ -90,7 +90,7 @@
                                         <!-- status yang harus dikerjakan -->
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <asp:Label ID="Labelstatus" runat="server" Text='<%# "waiting for " + Eval("LatestStatus.StatusCode")%>' /></div>
+                                                <asp:Label ID="Labelstatus" runat="server" Text='<%# Eval("LatestStatus.Description")%>' /></div>
                                         </div>
                                     </div>
 
