@@ -46,8 +46,6 @@ namespace WebApplication1
                 Date = Convert.ToDateTime(tbTanggal.Text),
                 Distributor = tbNama.Text,
                 Cause = tbInsiden.Text,
-                PICName = "Coba",
-                PICPhone = "080800880",
                 CaseClosed = false,
                 CustomerFacingId = Convert.ToInt32(CFDropdown.SelectedValue)
             };
