@@ -12,10 +12,14 @@ namespace WebApplication1.Services
     {
         private ClaimDB db;
         private IStatusService statusService;
-        public ClaimService(ClaimDB db, IStatusService check)
+        private IDocumentService documentService;
+        private INotificationService notificationService;
+        public ClaimService(ClaimDB db, IStatusService statusService, IDocumentService documentService, INotificationService notificationService)
         {
             this.db = db;
-            this.statusService = check;
+            this.statusService = statusService;
+            this.documentService = documentService;
+            this.notificationService = notificationService;
         }
 
         public IEnumerable<Claim> GetClaims()
@@ -72,6 +76,7 @@ namespace WebApplication1.Services
 
         public void UpdateClaim(Claim claim)
         {
+            claim.UpdatedAt = DateTime.Now;
             db.Entry(claim).State = EntityState.Modified;
             db.SaveChanges();
         }
@@ -97,6 +102,100 @@ namespace WebApplication1.Services
             var uploadedTypes = klaim.Documents.Select(i => i.Type).ToList();
             var set = new HashSet<DocType>(uploadedTypes);
             return set.SetEquals(doctype);
+        }
+
+        public void ApprovalProcessCheck(int idClaim)
+        {
+            var klaim = this.ClaimDetails(idClaim);
+            klaim.LatestStatus = this.statusService.GetStatus(idClaim);
+            if ((klaim.Documents.Where(x => x.Approved).Count() == 8) && (klaim.LatestStatus.StatusCode == "WA"))
+            {
+                klaim.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(klaim.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = idClaim,
+                    StatusCode = "SP",
+                    Description = "Upload Surat Pengajuan",
+                    Done = false,
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now.AddDays(2)
+                };
+                this.statusService.CreateStatus(status);
+            }
+            else if (((klaim.Documents.Where(x => x.Approved).Count() + klaim.Documents.Where(x => x.Rejected).Count()) == 8) && (klaim.LatestStatus.StatusCode == "WA"))
+            {
+                var documentsToDelete = klaim.Documents.Where(x => x.Rejected).ToList();
+                foreach (var doc in documentsToDelete)
+                {
+                    this.documentService.RemoveDocument(doc);
+                }
+                this.statusService.RemoveStatus(klaim.LatestStatus);
+                klaim.LatestStatus = this.statusService.GetStatus(idClaim);
+                klaim.LatestStatus.Done = false;
+                this.statusService.UpdateStatus(klaim.LatestStatus);
+            }
+            else if (klaim.LatestStatus.StatusCode == "SO")
+            {
+                klaim.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(klaim.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = idClaim,
+                    StatusCode = "LSR",
+                    Description = "Loss Subrogation Receipt",
+                    Done = false,
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now.AddDays(2)
+                };
+                this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "Settlement approved, waiting for LSR",
+                    Read = false,
+                    RecipientRole = "Treasury",
+                    ClaimId = idClaim
+                };
+                this.notificationService.CreateNotification(notification);
+            }
+            else if (klaim.LatestStatus.StatusCode == "LSR")
+            {
+                klaim.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(klaim.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = idClaim,
+                    StatusCode = "DISP",
+                    Description = "Disposal Process",
+                    Done = false,
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now.AddDays(9)
+                };
+                this.statusService.CreateStatus(status);
+                Notification notification = new Notification()
+                {
+                    Message = "LSR Approved, waiting for BA disposal",
+                    Read = false,
+                    RecipientRole = "LogisticDispo",
+                    ClaimId = idClaim
+                };
+                this.notificationService.CreateNotification(notification);
+            }
+            else if (klaim.LatestStatus.StatusCode == "DISP")
+            {
+                klaim.LatestStatus.Done = true;
+                this.statusService.UpdateStatus(klaim.LatestStatus);
+                Status status = new Status()
+                {
+                    ClaimId = idClaim,
+                    StatusCode = "OK",
+                    Description = "Klaim Selesai",
+                    ValidFrom = DateTime.Now,
+                    ValidUntil = DateTime.Now,
+                    Done = true
+                };
+                this.statusService.CreateStatus(status);
+            }
         }
         public void LateSubmission(LateSubmission lateSubmission)
         {

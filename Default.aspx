@@ -101,7 +101,7 @@
                         <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
                             <td style="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
                             <td>Nama PIC:
-                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' />
+                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("CustomerFacing.CFName")%>' />
                                 <br />
                                 <br />
                                 Tanggal Kejadian:

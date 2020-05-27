@@ -70,25 +70,38 @@
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                      <th>Nama</th>
-                                      <th>Email</th>
-                                      <th>Role</th>
-                                      <th></th>                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Joko</td>
-                                      <td>joko@email.com</td>
-                                      <td>Admin</td>
-                                      <td><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete" /></td>
-                                    </tr>
-                                </tbody>
-                            </table>                     
-
+                            <asp:ListView ID="UserListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.Profile" runat="server">
+                                <EmptyDataTemplate>
+                                    <table>
+                                        <tr>
+                                            <td>No data was returned.</td>
+                                        </tr>
+                                    </table>
+                                </EmptyDataTemplate>
+                                <LayoutTemplate>
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                              <th>Nama</th>
+                                              <th>Email</th>
+                                              <th>Role</th>
+                                              <th></th>                                      
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr runat="server" id="itemPlaceholder" />
+                                        </tbody>
+                                    </table>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                  <tr>
+                                    <td><asp:Label ID="Label1" runat="server" Text='<%# Eval("Name")%>' /></td>
+                                    <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("Email")%>' /></td>
+                                    <td><%# string.Join( " ", ((List<string>)Eval("Role")).ToArray() ) %></td>
+                                    <td><asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Email")%>' OnClick="DeleteUser_Click" /></td>
+                                  </tr>
+                                </ItemTemplate>
+                          </asp:ListView>
                         </div>
                     </div>
                </div>

@@ -334,7 +334,7 @@
                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.ClaimFormAIG).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -369,7 +369,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratLaporan).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -404,7 +404,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.Invoice).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -439,7 +439,7 @@
                                                </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.LP1Bulan).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -474,7 +474,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.SuratJalan).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -509,7 +509,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.InvoicePengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -544,7 +544,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.RekapPengeluaran).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -579,7 +579,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
-                                                        Approved at 
+                                                        Approved at <%= claimDetail.Documents.Where(x => x.Type == WebApplication1.Model.DocType.QCReport).OrderByDescending(x => x.Id).FirstOrDefault().UpdatedAt %>
                                                     </div>
                                                </div>
                                             </div>
@@ -654,15 +654,16 @@
                                                 <% if (!claimDetail.Statuses.Where(x => x.StatusCode == "WO").FirstOrDefault().Done) { %>                                        
                                                     <div class="form-group">
                                                         <div class="col-sm-2">
-                                                            <asp:Button runat="server" id="Button24" CssClass="btn btn-success" text="Approve" CommandArgument="approve" onclick="AONAction_Click" />
+                                                            <asp:Button runat="server" id="BtnApproveFeedback" CssClass="btn btn-success" text="Approve" CommandArgument="approve" onclick="AONAction_Click" />
                                                         </div>
                                                         <div class="col-sm-7">
-                                                            <asp:Button runat="server" id="Button25" CssClass="btn btn-warning" text="Give Feedback" CommandArgument="feedback" onclick="AONAction_Click" />
+                                                            <asp:Button runat="server" id="BtnFeedback" CssClass="btn btn-warning" text="Give Feedback" CommandArgument="feedback" onclick="AONAction_Click" />
                                                         </div>
 
                                                         <asp:PlaceHolder runat="server" ID="AONFeedBackView" Visible="false">
                                                             <div class="col-sm-4"><asp:textbox id="textarea" textmode="multiline" runat="server"/></div>
                                                             <div class="col-sm-3"><asp:Button runat="server" id="Button26" CssClass="btn btn-primary" text="Give Feedback" onclick="SubmitFeedBack_Click" /></div>
+                                                            <div class="col-sm-3"><asp:Button runat="server" id="Button7" CssClass="btn btn-warning" text="Cancel" onclick="CancelFeedBack_Click" /></div>
                                                         </asp:PlaceHolder>
 
                                                     </div>
@@ -921,13 +922,11 @@
                                         </div>
                                     </asp:PlaceHolder>
                                 <% } %>
-
-
                                 <!-- proses selesai -->
                                 <% if (status.StatusCode == "OK") { %>
                                     <asp:PlaceHolder runat="server" ID="ProccessDone" Visible="false">
                                         <div class="box">
-                                            <a class="box-header bg-gray" data-toggle="collapse" href="#selesai" role="button" aria-expanded="false" aria-controls="uploadfbp">
+                                            <a class="box-header bg-gray" data-toggle="collapse" href="#selesai" role="button" aria-expanded="false" aria-controls="selesai">
                                               <div class="col-md-11">Proses Selesai</div>
                                               <div class="col-md-1"> 
                                                 <i class="fa fa-check" style="color:green"></i>
@@ -936,7 +935,7 @@
                                             <div class="collapse" id="selesai">
                                                 <div class="box-body">
                                                     <div class="col-sm-2">
-                                                        <asp:Button runat="server" id="Button4" CssClass="btn btn-success" text="Done" />
+                                                        <asp:Button runat="server" id="Button4" CssClass="btn btn-success" OnClick="Selesai_Click" text="Done" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -990,7 +989,7 @@
                 </div>
                 <div class="form-group">
                   <label class="col-sm-5 control-label">PIC Name</label>
-                  <p class="col-sm-6 form-control-static"><%= claimDetail.PICName %></p>
+                  <p class="col-sm-6 form-control-static"><%= claimDetail.CustomerFacing.CFName %></p>
                 </div>
               </div>            
          </div>
