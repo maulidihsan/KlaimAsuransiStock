@@ -654,91 +654,6 @@ namespace WebApplication1
             this.claimService.ApprovalProcessCheck(id);
         }
 
-        void ApprovalProcess()
-        {
-            claimDetail.LatestStatus = this.statusService.GetStatus(id);
-            if ((claimDetail.Documents.Where(x => x.Approved).Count() == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
-            {
-                claimDetail.LatestStatus.Done = true;
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-                Status status = new Status()
-                {
-                    ClaimId = id,
-                    StatusCode = "SP",
-                    Description = "Upload Surat Pengajuan",
-                    Done = false,
-                    ValidFrom = DateTime.Now,
-                    ValidUntil = DateTime.Now.AddDays(2)
-                };
-                this.statusService.CreateStatus(status);
-            }
-            else if (((claimDetail.Documents.Where(x => x.Approved).Count() + claimDetail.Documents.Where(x => x.Rejected).Count()) == 8) && (claimDetail.LatestStatus.StatusCode == "WA"))
-            {
-                var documentsToDelete = this.claimDetail.Documents.Where(x => x.Rejected).ToList();
-                foreach (var doc in documentsToDelete)
-                {
-                    this.documentService.RemoveDocument(doc);
-                }
-                this.statusService.RemoveStatus(claimDetail.LatestStatus);
-                claimDetail.LatestStatus = this.statusService.GetStatus(id);
-                claimDetail.LatestStatus.Done = false;
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-            }
-            else if (claimDetail.LatestStatus.StatusCode == "SO")
-            {
-                claimDetail.LatestStatus.Done = true;
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-                Status status = new Status()
-                {
-                    ClaimId = id,
-                    StatusCode = "LSR",
-                    Description = "Loss Subrogation Receipt",
-                    Done = false,
-                    ValidFrom = DateTime.Now,
-                    ValidUntil = DateTime.Now.AddDays(2)
-                };
-                this.statusService.CreateStatus(status);
-                Notification notification = new Notification()
-                {
-                    Message = "Settlement approved, waiting for LSR",
-                    Read = false,
-                    RecipientRole = "Treasury",
-                    ClaimId = id
-                };
-                this.notificationService.CreateNotification(notification);
-            }
-            else if (claimDetail.LatestStatus.StatusCode == "LSR")
-            {
-                claimDetail.LatestStatus.Done = true;
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-                Status status = new Status()
-                {
-                    ClaimId = id,
-                    StatusCode = "DISP",
-                    Description = "Disposal Process",
-                    Done = false,
-                    ValidFrom = DateTime.Now,
-                    ValidUntil = DateTime.Now.AddDays(9)
-                };
-                this.statusService.CreateStatus(status);
-                Notification notification = new Notification()
-                {
-                    Message = "LSR Approved, waiting for BA disposal",
-                    Read = false,
-                    RecipientRole = "LogisticDispo",
-                    ClaimId = id
-                };
-                this.notificationService.CreateNotification(notification);
-            }
-            else if (claimDetail.LatestStatus.StatusCode == "DISP")
-            {
-                claimDetail.LatestStatus.Done = true;
-                claimDetail.CaseClosed = true;
-                claimService.UpdateClaim(claimDetail);
-                this.statusService.UpdateStatus(claimDetail.LatestStatus);
-            }
-        }
-
         protected void RejectDocument_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
@@ -795,7 +710,7 @@ namespace WebApplication1
                     this.documentService.UpdateDocument(rejectDocument);
                     break;
             }
-            ApprovalProcess();
+            this.claimService.ApprovalProcessCheck(id);
         }
 
         protected void AONAction_Click(object sender, EventArgs e)
