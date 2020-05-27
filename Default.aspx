@@ -98,8 +98,9 @@
                             </td>
                         </tr>
                         <!-- baris expand -->
-                        <tr class="collapse" id="accordion<%# Container.DisplayIndex %>">
-                            <td style="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a></td>
+                        <tr class="collapse" id="accordion<%# Container.DisplayIndex %>" style="background-color:lightyellow">
+                            <td style="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a>
+                                <br /><br /><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete Klaim" /></td>
                             <td>Nama PIC:
                                 <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("CustomerFacing.CFName")%>' />
                                 <br />
