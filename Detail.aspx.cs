@@ -651,7 +651,7 @@ namespace WebApplication1
                     break;
             }
 
-            ApprovalProcess();
+            this.claimService.ApprovalProcessCheck(id);
         }
 
         void ApprovalProcess()
@@ -800,6 +800,8 @@ namespace WebApplication1
 
         protected void AONAction_Click(object sender, EventArgs e)
         {
+            BtnApproveFeedback.Visible = false;
+            BtnFeedback.Visible = false;
             Button btn = sender as Button;
             string action = btn.CommandArgument.ToString();
             if (action == "approve")
@@ -826,7 +828,12 @@ namespace WebApplication1
                 AONFeedBackView.Visible = true;
             }
         }
-
+        protected void CancelFeedBack_Click(object sender, EventArgs e)
+        {
+            BtnApproveFeedback.Visible = true;
+            BtnFeedback.Visible = true;
+            AONFeedBackView.Visible = false;
+        }
         protected void SubmitFeedBack_Click(object sender, EventArgs e)
         {
             claimDetail.LatestStatus = this.statusService.GetStatus(id);
@@ -843,6 +850,7 @@ namespace WebApplication1
                     Description = "Feedback from AON",
                     Done = false,
                     ValidFrom = DateTime.Now,
+
                     ValidUntil = DateTime.Now.AddDays(14)
                 };
                 this.statusService.CreateStatus(status);
@@ -889,6 +897,11 @@ namespace WebApplication1
                 claimDetail.CaseClosed = true;
                 claimService.UpdateClaim(claimDetail);
             }
+        }
+        protected void Selesai_Click(object sender, EventArgs e)
+        {
+            claimDetail.CaseClosed = true;
+            this.claimService.UpdateClaim(claimDetail);
         }
     }
 }
