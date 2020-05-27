@@ -27,20 +27,26 @@ namespace WebApplication1
                 {
                     Response.Redirect("/Login");
                 }
+
+                if (User.IsInRole("FBP") || User.IsInRole("Admin"))
+                {
+                    BtnRaise.Visible = true;
+                }
+
+                if (PaginationParamsAreSet())
+                {
+                    var size = Convert.ToInt32(Page.RouteData.Values["size"]);
+                    var index = Convert.ToInt32(Page.RouteData.Values["index"]);
+                    listClaim = this.claimService.GetClaimPaginated(size, index);
+                }
+                else
+                {
+                    listClaim = this.claimService.GetClaimPaginated(DefaultPageSize, DefaultPageIndex);
+                }
+                ClaimListView.DataSource = listClaim.Data;
+                ClaimListView.DataBind();
+                ConfigurePagination();
             }
-            if (PaginationParamsAreSet())
-            {
-                var size = Convert.ToInt32(Page.RouteData.Values["size"]);
-                var index = Convert.ToInt32(Page.RouteData.Values["index"]);
-                listClaim = this.claimService.GetClaimPaginated(size, index);
-            }
-            else
-            {
-                listClaim = this.claimService.GetClaimPaginated(DefaultPageSize, DefaultPageIndex);
-            }
-            ClaimListView.DataSource = listClaim.Data;
-            ClaimListView.DataBind();
-            ConfigurePagination();
         }
         private bool PaginationParamsAreSet()
         {
@@ -54,6 +60,25 @@ namespace WebApplication1
            
             PaginationPrevious.NavigateUrl = GetRouteUrl("ClaimsByPageRoute", new { index = listClaim.ActualPage - 1, size = listClaim.ItemsPerPage });
             PaginationPrevious.Visible = listClaim.ActualPage > 0 ? true : false;
+        }
+
+        protected void Delete_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            this.claimService.RemoveClaim(Convert.ToInt32(btn.CommandArgument.ToString()));
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void ClaimListView_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            var item = (ListViewItem) e.Item;
+
+            var button = (Button)item.FindControl("BtnDelete");
+            button.Visible = false;
+            if (User.IsInRole("FBP") || User.IsInRole("Admin"))
+            {
+                button.Visible = true;
+            }   
         }
     }
 }
