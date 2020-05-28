@@ -97,7 +97,7 @@
                                   <tr>
                                     <td><asp:Label ID="Label1" runat="server" Text='<%# Eval("Name")%>' /></td>
                                     <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("Email")%>' /></td>
-                                    <td><%# string.Join( " ", ((List<string>)Eval("Role")).ToArray() ) %></td>
+                                    <td><%# string.Join( " ", ((List<string>)Eval("Roles")).ToArray() ) %></td>
                                     <td><asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Email")%>' OnClick="DeleteUser_Click" /></td>
                                   </tr>
                                 </ItemTemplate>
