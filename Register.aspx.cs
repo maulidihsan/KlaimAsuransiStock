@@ -35,17 +35,13 @@ namespace WebApplication1
                 List<Profile> listUserProfile = new List<Profile>();
                 foreach (var u in user)
                 {
-                    List<string> userRole = new List<string>();
-                    foreach (var r in u.Roles)
-                    {
-                        userRole.Add(r.ToString());
-                    }
+                    var role = this.userManager.GetRoles(u.Id);
                     
                     Profile p = new Profile
                     {
                         Name = u.UserName,
                         Email = u.Email,
-                        Roles = userRole
+                        Roles = role.ToList()
                     };
                     listUserProfile.Add(p);
                 }
