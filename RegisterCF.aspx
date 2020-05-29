@@ -3,8 +3,9 @@
     <section class="content-header" runat="server">
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Register CF </a></li>
-      </ol>      
+        <li><a href="#"><i class="fa fa-dashboard"></i> Register </a></li>
+        <li class="active">New CF</li>
+      </ol>        
    </section>
 
    <section class="content" runat="server">
@@ -21,13 +22,25 @@
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Lokasi</asp:Label></div>
                             <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbLokasiCF" /></div>
                         </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidatortbLokasiCF" runat="server" ControlToValidate="tbLokasiCF" ErrorMessage="Location cannot be blank" ForeColor="Red"/></div>                            
+                        </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Nama</asp:Label></div>
                             <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbName" /></div>
                         </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidatortbName" runat="server" ControlToValidate="tbName" ErrorMessage="Name cannot be blank" ForeColor="Red"/></div>                            
+                        </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"><asp:Label runat="server" AssociatedControlID="">Email</asp:Label></div>
                             <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="tbEmail" /></div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidatortbEmail" runat="server" ControlToValidate="tbEmail" ErrorMessage="Email cannot be blank" ForeColor="Red"/></div>                            
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"></div>

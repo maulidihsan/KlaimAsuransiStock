@@ -27,17 +27,33 @@
                           <label class="col-sm-3 control-label">Nama Distributor</label>
                           <div class="col-sm-7"><asp:TextBox id="tbNama" CssClass="form-control" runat="server" /></div>
                         </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbNama" ErrorMessage="Name cannot be blank" ForeColor="Red"/></div>                            
+                        </div>
                         <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Kode Distributor</label>
                           <div class="col-sm-7"><asp:TextBox id="tbKode" CssClass="form-control" runat="server" /></div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tbKode" ErrorMessage="Kode Distributor cannot be blank" ForeColor="Red"/></div>                            
                         </div>
                         <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Insiden Klaim</label>
                           <div class="col-sm-7"><asp:TextBox id="tbInsiden" CssClass="form-control" runat="server" /></div>
                         </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbInsiden" ErrorMessage="Insiden Klaim cannot be blank" ForeColor="Red"/></div>                            
+                        </div>
                         <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">Tanggal Kejadian</label>
                           <div class="col-sm-7"><asp:TextBox id="tbTanggal" CssClass="form-control" textmode="date" runat="server" /></div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"><asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbTanggal" ErrorMessage="Tanggal Kejadian cannot be blank" ForeColor="Red"/></div>                            
                         </div>
                         <div class="row" style="margin-bottom:10px">
                         <label class="col-sm-3 control-label">Area</label>
@@ -46,11 +62,19 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"></div>                            
+                        </div>
                         <div class="row" style="margin-bottom:10px">
                           <label class="col-sm-3 control-label">CF to be Notified</label>
                           <div class="col-sm-7">
                               <asp:TextBox id="tbCF" CssClass="form-control" Enabled="false" runat="server" />
                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"></div>                            
                         </div>
                       </div>
 

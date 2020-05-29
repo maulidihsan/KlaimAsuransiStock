@@ -75,7 +75,11 @@
                                                 <div class="row">
                                                     <label class="col-sm-2" for="claimformFile">Explanation</label>
                                                     <div class="col-sm-7"><asp:TextBox id="ExplanationTxt1" TextMode="multiline" CssClass="form-control" runat="server" Enabled="false" /></div>
-                                                </div>
+                                                </div> 
+                                                <div class="row">
+                                                    <label class="col-sm-2" for="claimformFile">Explanation</label>
+                                                    <div class="col-sm-7"><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ExplanationTxt1" ErrorMessage="Name cannot be blank" ForeColor="Red"/></div>
+                                                </div> 
                                             </div>
                                         </div>
                                         <div class="box-footer">
