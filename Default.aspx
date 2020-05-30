@@ -104,7 +104,7 @@
                             <td style="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a>
                                 <br /><br /><asp:Button runat="server" CssClass="btn btn-danger" ID="BtnDelete" CommandArgument='<%# Eval("Id") %>' Text="Delete Klaim" OnClick="Delete_Click" /></td>
                             <td>Nama PIC:
-                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' /><br /><br />
+                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("CustomerFacing.CFName")%>' /><br /><br />
                                 Tanggal Kejadian:
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("Date", "{0:dd MMMM yyyy}")%>' />
                             </td>
