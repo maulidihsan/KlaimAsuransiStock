@@ -12,16 +12,14 @@
         </h1>
         <h2></h2>
         <!-- Button Raise Claim -->
-        <asp:PlaceHolder ID="BtnRaise" Visible="false" runat="server">
-            <a href="/RaiseClaim.aspx" class="btn btn-primary">Raise Klaim</a>
-        </asp:PlaceHolder>
+        <a href="/RaiseClaim.aspx" class="btn btn-primary">Raise Klaim</a>
     </section>
 
     <section class="content">
         <div class="box">
             <!-- tabel dasboard -->
             <div class="box-body">
-                <asp:ListView ID="ClaimListView" ItemPlaceholderID="itemPlaceholder" OnItemDataBound="ClaimListView_ItemDataBound" ItemType="WebApplication1.Model.Claim"  runat="server">
+                <asp:ListView ID="ClaimListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.Claim" runat="server">
                     <EmptyDataTemplate>
                         <table>
                             <tr>
@@ -102,11 +100,9 @@
                         <!-- baris expand -->
                         <tr class="collapse" id="accordion<%# Container.DisplayIndex %>" style="background-color:lightyellow">
                             <td style="center"><a href="/Detail/id/<%# Eval("Id") %>" class="btn btn-primary">Detail</a>
-                                <br /><br /><asp:Button runat="server" CssClass="btn btn-danger" ID="BtnDelete" CommandArgument='<%# Eval("Id") %>' Text="Delete Klaim" OnClick="Delete_Click" /></td>
+                                <br /><br /><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete Klaim" /></td>
                             <td>Nama PIC:
-                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("CustomerFacing.CFName")%>' />
-                                <br />
-                                <br />
+                                <asp:Label ID="ExpandPIC" runat="server" Text='<%# Eval("PICName")%>' /><br /><br />
                                 Tanggal Kejadian:
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("Date", "{0:dd MMMM yyyy}")%>' />
                             </td>
@@ -125,8 +121,8 @@
                         </tr>
                     </ItemTemplate>
                 </asp:ListView>
-
             </div>
+            <!-- Next page table -->
             <div class="box-footer clearfix">
                 <span>Page <%: (listClaim.ActualPage + 1)%> of <%: listClaim.TotalPages%>
                 </span>
