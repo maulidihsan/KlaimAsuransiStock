@@ -4,6 +4,7 @@
       <!-- Breadcrumb -->
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Register </a></li>
+        <li class="active">New User</li>
       </ol>      
    </section>
 
@@ -47,13 +48,18 @@
                         </div>
                         <div class="row" style="margin-bottom:3px">
                             <div class="col-md-3"></div>
-                            <div class="col-md-7"><asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" ErrorMessage="Password and confirm password must be same" ForeColor="Red" /></div>                            
+                            <div class="col-md-7">
+                                <asp:CompareValidator ID="cvPassword" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword" ErrorMessage="Password and confirm password must be same" ForeColor="Red" />
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ConfirmPassword" ErrorMessage="Confirm Password cannot be blank" ForeColor="Red"/>
+                            </div>     
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="RoleDropdown">Role</asp:Label></div>
                             <div class="col-md-7"><asp:DropDownList ID="RoleDropdown" CssClass="form-control select2" AutoPostBack="True" runat="server"></asp:DropDownList></div>
                         </div>
                         <div class="row" style="margin-bottom:3px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"></div>                            
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-3"></div>
