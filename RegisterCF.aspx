@@ -44,7 +44,7 @@
                         </div>
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-4"></div>
-                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" Text="Register" OnClick="CreateCF_Click" /></div>
+                            <div class="col-md-7"><asp:Button runat="server" CausesValidation="true" CssClass="btn btn-info" Text="Register" OnClick="CreateCF_Click" /></div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                                     <td><asp:Label ID="Label1" runat="server" Text='<%# Eval("CFArea")%>' /></td>
                                     <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("CFName")%>' /></td>
                                     <td><asp:Label ID="Label3" runat="server" Text='<%# Eval("CFEmail")%>' /></td>
-                                    <td><asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Id")%>' OnClick="DeleteCF_Click" /></td>
+                                    <td><asp:Button ID="btnDelete" runat="server" CausesValidation="false" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Id")%>' OnClick="DeleteCF_Click" /></td>
                                   </tr>
                                 </ItemTemplate>
                           </asp:ListView>

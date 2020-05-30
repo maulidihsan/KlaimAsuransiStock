@@ -17,7 +17,15 @@
                         <h1 class="box-title">Register a new user</h1>
                     </div>
                     <div class="box-body">
-                        <p><asp:Literal runat="server" ID="StatusMessage" /></p>                
+                        <p><asp:Literal runat="server" ID="StatusMessage" /></p>      
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="RoleDropdown">Role</asp:Label></div>
+                            <div class="col-md-7"><asp:DropDownList ID="RoleDropdown" CssClass="form-control select2" AutoPostBack="True" runat="server"></asp:DropDownList></div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7"></div>                            
+                        </div>          
                         <div class="row" style="margin-bottom:10px">
                             <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="Name">Name</asp:Label></div>
                             <div class="col-md-7"><asp:TextBox runat="server" CssClass="form-control" ID="Name" /></div>                            
@@ -54,16 +62,8 @@
                             </div>     
                         </div>
                         <div class="row" style="margin-bottom:10px">
-                            <div class="col-md-3"><asp:Label runat="server" AssociatedControlID="RoleDropdown">Role</asp:Label></div>
-                            <div class="col-md-7"><asp:DropDownList ID="RoleDropdown" CssClass="form-control select2" AutoPostBack="True" runat="server"></asp:DropDownList></div>
-                        </div>
-                        <div class="row" style="margin-bottom:3px">
                             <div class="col-md-3"></div>
-                            <div class="col-md-7"></div>                            
-                        </div>
-                        <div class="row" style="margin-bottom:10px">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-7"><asp:Button runat="server" CssClass="btn btn-info" OnClick="CreateUser_Click" Text="Register" /></div>                                
+                            <div class="col-md-7"><asp:Button runat="server" CausesValidation="true" CssClass="btn btn-info" OnClick="CreateUser_Click" Text="Register" /></div>                                
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                                       <td>Joko</td>
                                       <td>joko@email.com</td>
                                       <td>Admin</td>
-                                      <td><asp:Button runat="server" CssClass="btn btn-danger" Text="Delete" /></td>
+                                      <td><asp:Button runat="server" CausesValidation="false" CssClass="btn btn-danger" Text="Delete" /></td>
                                     </tr>
                                 </tbody>
                             </table>                     
