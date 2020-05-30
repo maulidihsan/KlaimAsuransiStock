@@ -33,6 +33,7 @@ namespace WebApplication1.Services
 
         public void UpdateStatus(Status status)
         {
+            status.UpdatedAt = DateTime.Now;
             db.Entry(status).State = EntityState.Modified;
             db.SaveChanges();
         }

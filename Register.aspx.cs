@@ -8,11 +8,14 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using WebApplication1.Modules;
+using WebApplication1.Model;
 
 namespace WebApplication1
 {
     public partial class Register : System.Web.UI.Page
     {
+        private static UserManager<IdentityUser> userManager;
+        private static RoleManager<IdentityRole> roleManager;
         protected void Page_Load(object sender, EventArgs e)
         {
             List<string> roles = new List<string>() { "Admin", "Treasury", "FBP", "AON", "QC", "LogisticDispo" };
@@ -24,13 +27,31 @@ namespace WebApplication1
                 }
                 RoleDropdown.DataSource = roles;
                 RoleDropdown.DataBind();
+
+                userManager = AuthConfig.UserManagerFactory();
+                roleManager = AuthConfig.RoleManagerFactory();
+                var user = userManager.Users.ToList();
+
+                List<Profile> listUserProfile = new List<Profile>();
+                foreach (var u in user)
+                {
+                    var role = userManager.GetRoles(u.Id);
+                    
+                    Profile p = new Profile
+                    {
+                        Name = u.UserName,
+                        Email = u.Email,
+                        Roles = role.ToList()
+                    };
+                    listUserProfile.Add(p);
+                }
+                UserListView.DataSource = listUserProfile;
+                UserListView.DataBind();
             }
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var userManager = AuthConfig.UserManagerFactory();
-            var roleManager = AuthConfig.RoleManagerFactory();
             var user = new IdentityUser() { UserName = Name.Text, Email = Email.Text };
             if (!roleManager.RoleExists(RoleDropdown.SelectedValue))
             {
@@ -46,6 +67,14 @@ namespace WebApplication1
             {
                 StatusMessage.Text = result.Errors.FirstOrDefault();
             }
+            Response.Redirect(Request.RawUrl);
+        }
+        protected void DeleteUser_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            var userToDelete = userManager.FindByEmail(btn.CommandArgument);
+            userManager.Delete(userToDelete);
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

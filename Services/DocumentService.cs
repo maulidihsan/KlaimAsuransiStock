@@ -22,6 +22,7 @@ namespace WebApplication1.Services
 
         public void UpdateDocument(Document document)
         {
+            document.UpdatedAt = DateTime.Now;
             db.Entry(document).State = EntityState.Modified;
             db.SaveChanges();
         }

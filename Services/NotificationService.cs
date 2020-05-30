@@ -26,6 +26,7 @@ namespace WebApplication1.Services
         }
         public void UpdateNotification(Notification update)
         {
+            update.UpdatedAt = DateTime.Now;
             db.Entry(update).State = EntityState.Modified;
             db.SaveChanges();
         }

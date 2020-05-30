@@ -18,8 +18,6 @@ namespace WebApplication1.Model
         public DateTime Date { get; set; }
         public string Distributor { get; set; }
         public string Cause { get; set; }
-        public string PICName { get; set; }
-        public string PICPhone { get; set; }
         public DateTime CreatedAt { get; set; }
         public Nullable<DateTime> UpdatedAt { get; set; }
         public int CustomerFacingId { get; set; }

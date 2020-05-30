@@ -76,6 +76,7 @@
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
+<<<<<<< HEAD
                             <table class="table no-margin">
                                 <thead>
                                     <tr>
@@ -95,6 +96,40 @@
                                 </tbody>
                             </table>                     
 
+=======
+                            <asp:ListView ID="UserListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.Profile" runat="server">
+                                <EmptyDataTemplate>
+                                    <table>
+                                        <tr>
+                                            <td>No data was returned.</td>
+                                        </tr>
+                                    </table>
+                                </EmptyDataTemplate>
+                                <LayoutTemplate>
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                              <th>Nama</th>
+                                              <th>Email</th>
+                                              <th>Role</th>
+                                              <th></th>                                      
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr runat="server" id="itemPlaceholder" />
+                                        </tbody>
+                                    </table>
+                                </LayoutTemplate>
+                                <ItemTemplate>
+                                  <tr>
+                                    <td><asp:Label ID="Label1" runat="server" Text='<%# Eval("Name")%>' /></td>
+                                    <td><asp:Label ID="Label2" runat="server" Text='<%# Eval("Email")%>' /></td>
+                                    <td><%# string.Join( " ", ((List<string>)Eval("Roles")).ToArray() ) %></td>
+                                    <td><asp:Button ID="btnDelete" runat="server" CssClass="btn btn-danger" Text="Delete" CommandArgument='<%# Eval("Email")%>' OnClick="DeleteUser_Click" /></td>
+                                  </tr>
+                                </ItemTemplate>
+                          </asp:ListView>
+>>>>>>> 1a93bb27072a31423a4850001c46a334b50f95a4
                         </div>
                     </div>
                </div>
