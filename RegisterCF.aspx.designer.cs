@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
-{
-
-
-    public partial class RegisterCF
-    {
-
+namespace WebApplication1 {
+    
+    
+    public partial class RegisterCF {
+        
         /// <summary>
         /// StatusMessage control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal StatusMessage;
-
+        
         /// <summary>
         /// tbLokasiCF control.
         /// </summary>
@@ -31,7 +29,16 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbLokasiCF;
-
+        
+        /// <summary>
+        /// RequiredFieldValidatortbLokasiCF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatortbLokasiCF;
+        
         /// <summary>
         /// tbName control.
         /// </summary>
@@ -40,7 +47,16 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbName;
-
+        
+        /// <summary>
+        /// RequiredFieldValidatortbName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatortbName;
+        
         /// <summary>
         /// tbEmail control.
         /// </summary>
@@ -49,7 +65,16 @@ namespace WebApplication1
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
-
+        
+        /// <summary>
+        /// RequiredFieldValidatortbEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatortbEmail;
+        
         /// <summary>
         /// CFListView control.
         /// </summary>

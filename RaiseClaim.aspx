@@ -83,7 +83,7 @@
                             <!-- button submit raise claim -->              
                             <div class="col-sm-3"></div>
                             <div class="col-sm-7">
-                                <asp:Button ID="Submit" OnClick="Submit_Click" CssClass="btn btn-primary" Text="Submit" runat="server" />
+                                <asp:Button ID="Submit" OnClick="Submit_Click" CausesValidation="true" CssClass="btn btn-primary" Text="Submit" runat="server" />
                             </div>           
                         </div>
                     </div>
