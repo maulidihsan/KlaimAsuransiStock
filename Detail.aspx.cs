@@ -19,7 +19,8 @@ namespace WebApplication1
         public INotificationService notificationService { get; set; }
         private Int32 id;
         protected Claim claimDetail { get; set; }
-        protected List<string> docType = new List<string>() { 
+        protected List<string> docType = new List<string>()
+        { 
             "image/jpeg",
             "application/msword",
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -49,7 +50,7 @@ namespace WebApplication1
                 }
                 if (User.IsInRole("Treasury") || User.IsInRole("Admin"))
                 {
-                    TreasuryApproveView.Visible = true;
+                    
                     TreasuryUploadView.Visible = true;
                     TreasurySettlement.Visible = true;
                     TreasuryLSR.Visible = true;
@@ -59,6 +60,7 @@ namespace WebApplication1
                 }
                 if (User.IsInRole("AON") || User.IsInRole("Admin"))
                 {
+                    TreasuryApproveView.Visible = true;
                     AONApproveView.Visible = true;
                     AONSettlement.Visible = true;
                     AONLSR.Visible = true;
@@ -355,7 +357,7 @@ namespace WebApplication1
                 {
                     Message = "Claim documents waiting for approval",
                     Read = false,
-                    RecipientRole = "Treasury",
+                    RecipientRole = "AON",
                     ClaimId = id
                 };
                 this.notificationService.CreateNotification(notification);
