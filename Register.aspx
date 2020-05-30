@@ -76,27 +76,6 @@
                     </div>
                     <div class="box-body">
                         <div class="table-responsive">
-<<<<<<< HEAD
-                            <table class="table no-margin">
-                                <thead>
-                                    <tr>
-                                      <th>Nama</th>
-                                      <th>Email</th>
-                                      <th>Role</th>
-                                      <th></th>                                      
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                      <td>Joko</td>
-                                      <td>joko@email.com</td>
-                                      <td>Admin</td>
-                                      <td><asp:Button runat="server" CausesValidation="false" CssClass="btn btn-danger" Text="Delete" /></td>
-                                    </tr>
-                                </tbody>
-                            </table>                     
-
-=======
                             <asp:ListView ID="UserListView" ItemPlaceholderID="itemPlaceholder" ItemType="WebApplication1.Model.Profile" runat="server">
                                 <EmptyDataTemplate>
                                     <table>
@@ -129,7 +108,6 @@
                                   </tr>
                                 </ItemTemplate>
                           </asp:ListView>
->>>>>>> 1a93bb27072a31423a4850001c46a334b50f95a4
                         </div>
                     </div>
                </div>
