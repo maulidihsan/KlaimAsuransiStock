@@ -14,5 +14,7 @@ namespace WebApplication1.Services
         void UpdateStatus(Status status);
         void RemoveStatus(Status status);
         Status GetById(int idStatus);
+        void LateSubmission(LateSubmission lateSubmission);
+        string GetLateReason(int idStatus);
     }
 }
