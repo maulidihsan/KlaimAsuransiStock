@@ -43,6 +43,16 @@ namespace WebApplication1.Services
             db.Statuses.Remove(status);
             db.SaveChanges();
         }
+        public void LateSubmission(LateSubmission lateSubmission)
+        {
+            db.LateSubmissions.Add(lateSubmission);
+            db.SaveChanges();
+        }
+
+        public string GetLateReason(int statusId)
+        {
+            return db.LateSubmissions.Where(x => x.StatusId == statusId).Select(x => x.Reason).DefaultIfEmpty("Reason not submitted yet").FirstOrDefault();
+        }
 
         public void Dispose()
         {

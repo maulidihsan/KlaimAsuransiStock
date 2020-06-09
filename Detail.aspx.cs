@@ -76,7 +76,7 @@ namespace WebApplication1
             claimDetail = this.claimService.ClaimDetails(id);
             claimDetail.LatestStatus = statusService.GetStatus(id);
             if (!claimDetail.LatestStatus.Done && (claimDetail.LatestStatus.ValidUntil - DateTime.Now.Date).Days < 0) {
-                ExplanationTxt1.Text = claimService.GetLateReason(claimDetail.LatestStatus.Id);
+                ExplanationTxt1.Text = statusService.GetLateReason(claimDetail.LatestStatus.Id);
             }
         }
         protected void UploadButton_Click(object sender, EventArgs e)
@@ -790,7 +790,7 @@ namespace WebApplication1
                 StatusId = claimDetail.LatestStatus.Id,
                 Status = claimDetail.LatestStatus
             };
-            claimService.LateSubmission(lateSubmission);
+            statusService.LateSubmission(lateSubmission);
             Notification notification = new Notification()
             {
                 Message = "Late document submission",

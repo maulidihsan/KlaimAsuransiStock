@@ -52,22 +52,25 @@ namespace WebApplication1
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var user = new IdentityUser() { UserName = Name.Text, Email = Email.Text };
-            if (!roleManager.RoleExists(RoleDropdown.SelectedValue))
+            if (Password.Text == ConfirmPassword.Text)
             {
-                IdentityResult IdRoleResult = roleManager.Create(new IdentityRole { Name = RoleDropdown.SelectedValue });
-            }
-            IdentityResult result = userManager.Create(user, Password.Text);
+                var user = new IdentityUser() { UserName = Name.Text, Email = Email.Text };
+                if (!roleManager.RoleExists(RoleDropdown.SelectedValue))
+                {
+                    IdentityResult IdRoleResult = roleManager.Create(new IdentityRole { Name = RoleDropdown.SelectedValue });
+                }
+                IdentityResult result = userManager.Create(user, Password.Text);
 
-            if (result.Succeeded)
-            {
-                var addToRole = userManager.AddToRole(userManager.FindByEmail(user.Email).Id, RoleDropdown.SelectedValue);
+                if (result.Succeeded)
+                {
+                    var addToRole = userManager.AddToRole(userManager.FindByEmail(user.Email).Id, RoleDropdown.SelectedValue);
+                    Response.Redirect(Request.RawUrl);
+                }
+                else
+                {
+                    StatusMessage.Text = result.Errors.FirstOrDefault();
+                }
             }
-            else
-            {
-                StatusMessage.Text = result.Errors.FirstOrDefault();
-            }
-            Response.Redirect(Request.RawUrl);
         }
         protected void DeleteUser_Click(object sender, EventArgs e)
         {
